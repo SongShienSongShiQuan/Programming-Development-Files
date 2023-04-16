@@ -2,11 +2,13 @@ from concurrent.futures import thread
 from doctest import master
 from pdb import run
 from pydoc import doc
+from re import sub
 from runpy import run_module
 from string import whitespace
 import tkinter
 from turtle import back
 from types import NoneType
+from webbrowser import get
 import customtkinter as ctk
 from pyscreeze import center
 import tkinter
@@ -28,6 +30,17 @@ win = ctk
 root = ctk.CTk
 anti_afk_running = True
 
+#PATH Add path here to prevent scripts to start when added as variable
+script_path_anti_afk = 'C:/Users/Chowfer/Desktop/CODE SPACE/PyAutoGUI sample, script.py'
+script_path_modules = 'C:/Users/Chowfer/Desktop/CODE SPACE/Python Modules.py'
+script_path_keyboard = 'C:/Users/Chowfer/Desktop/CODE SPACE/Keypress_Detection_Python.py'
+
+#PID IDs, set variable to global in functions ex: "global pid_1"
+#PID is acquired because 'script_path_example' is added as a variable and it starts the process before being called.
+#Ex: 'subprocess.Popen(command).terminate()' Instead of terminating it lets the process run.
+pid_1 = 0
+pid_2 = 0
+pid_3 = 0
 
 class Aplikasi:
     def __init__(self, master: ctk.CTk):
@@ -57,6 +70,12 @@ class Aplikasi:
 
         framebackgroundcheck_modules = ctk.CTkFrame(self.master, width=420, height=30, fg_color="black", corner_radius=100)
         framebackgroundcheck_modules.place(relx=0.69, rely=0.2, anchor='center')
+        
+        framebackgroundcheck_keyboard_tester = ctk.CTkFrame(self.master, width=420, height=30, fg_color="black", corner_radius=100)
+        framebackgroundcheck_keyboard_tester.place(relx=0.69, rely=0.25, anchor='center')
+
+        framebackgroundcheck_hbrd = ctk.CTkFrame(self.master, width=420, height=30, fg_color="black", corner_radius=100)
+        framebackgroundcheck_hbrd.place(relx=0.69, rely=0.3, anchor='center')
 
         softwarename = ctk.CTkLabel(self.master, text='Xin Chào  -  Open Source GITHUB  -  Mako_Software.py', font=('Helvetica bold',26), bg_color="grey")
         softwarename.place(relx=0.5, rely=0.035, anchor='center')
@@ -98,6 +117,18 @@ class Aplikasi:
 
         self.check_modules_indicator = ctk.CTkFrame(self.master, width=10, height=30, fg_color="darkred", corner_radius=0)
         self.check_modules_indicator.place(relx=0.375, rely=0.2, anchor='center')
+        
+        self.outputtext4 = ctk.CTkLabel(self.master, text='OUTPUT', font=('Helvetica bold',10), bg_color="black", height=0.5)
+        self.outputtext4.place(relx=0.45, rely=0.25, anchor='center')
+
+        self.keyboard_tester = ctk.CTkButton(self.master, width=245, height=30, text='ENABLE TEST KEYBOARD', font=('Helvetica bold',10),command=self.enable_keyboard_tester_function, corner_radius=0, fg_color='indigo')
+        self.keyboard_tester.place(relx=0.185, rely=0.25, anchor='center')
+
+        self.outputtext4 = ctk.CTkLabel(self.master, text='OUTPUT', font=('Helvetica bold',10), bg_color="black", height=0.5)
+        self.outputtext4.place(relx=0.45, rely=0.3, anchor='center')
+
+        self.hbrd_ = ctk.CTkButton(self.master, width=245, height=30, text='Hybrid Shutdown', font=('Helvetica bold',10),command=self.hbrd_function, corner_radius=0, fg_color='indigo')
+        self.hbrd_.place(relx=0.185, rely=0.3, anchor='center')
 
     def increment(self):
         try:
@@ -121,7 +152,6 @@ class Aplikasi:
     def enable_anti_afk_keyboard_shortcut(self):
         try:
             self.outputprint.configure(text='Shortcut Enabled')
-            script_path = 'C:/Users/Chowfer/Desktop/CODE SPACE/PyAutoGUI sample, script.py'
             self.enableantiafk.configure(self.master, width=245, height=30, text='Enable Anti AFK Keyboard Shortcut', font=('Helvetica bold',10), command=self.enable_anti_afk_keyboard_shortcut, corner_radius=0, fg_color='red')
             self.enableantiafk.destroy()
             self.disableantiafk = ctk.CTkButton(self.master, width=245, height=30, text='Disable Anti AFK Keyboard Shortcut', font=('Helvetica bold',10), command=self.disable_anti_afk_keyboard_shortcut, corner_radius=0, fg_color='red')
@@ -129,15 +159,21 @@ class Aplikasi:
             
             self.anti_afk_indicator.configure(self.master, width=10, height=30, fg_color="darkgreen", corner_radius=0)
 
-            command = (script_path)
+            command = (script_path_anti_afk)
             print('Enabled Shortcut')
 
-            anti_afk_running = True
 
             process = subprocess.Popen(['python', command])
-            process()
             process_cmd = subprocess.Popen(["cmd.exe"])
-            process_cmd()
+
+            time.sleep(2)
+            get_pid = process.pid
+            print(get_pid)
+
+            global pid_3
+            pid_3 = get_pid
+            print(pid_3)
+
 
             if process.returncode == 0:
                 print('Script executed successfully')
@@ -151,8 +187,6 @@ class Aplikasi:
     def disable_anti_afk_keyboard_shortcut(self):
         try:
             self.outputprint.configure(text='Shortcut Disabled')
-            script_path = 'PyAutoGUI sample, script.py'
-            command = (script_path) #Variable set to script.
             print('Disabled Shortcut')
             self.disableantiafk.destroy()
             self.enableantiafk = ctk.CTkButton(self.master, width=245, height=30, text='Enable Anti AFK Keyboard Shortcut', font=('Helvetica bold',10), command=self.enable_anti_afk_keyboard_shortcut, corner_radius=0, fg_color='indigo')
@@ -163,8 +197,10 @@ class Aplikasi:
             anti_afk_running = False
             threading.Event()
 
-            process = subprocess.Popen(['python', command])
-            process.terminate()
+
+            print(pid_3)
+            os.kill(pid_3, 9)
+
         except Exception as d:
             print('Error:', d)
     def check_modules_enable_func(self):
@@ -177,14 +213,19 @@ class Aplikasi:
             
             self.check_modules_indicator.configure(self.master, width=10, height=30, fg_color="darkgreen", corner_radius=0)
 
-            script_path = 'C:/Users/Chowfer/Desktop/CODE SPACE/Python Modules.py'
-            command = (script_path)
-            print('Disable CHECK MODULES')
+            command = (script_path_modules)
+            print('Enable CHECK MODULES')
 
             process = subprocess.Popen(['python', command])
-            process()
             process_cmd = subprocess.Popen(["cmd.exe"])
-            process_cmd()
+
+            time.sleep(2)
+            get_pid = process.pid
+            print(get_pid)
+
+            global pid_2
+            pid_2 = get_pid
+            print(pid_2)
 
             if process.returncode == 0:
                 print('Script executed successfully')
@@ -204,19 +245,80 @@ class Aplikasi:
 
             script_path = 'C:/Users/Chowfer/Desktop/CODE SPACE/Python Modules.py'
             command = (script_path)
+
+            process = subprocess.Popen(['python', command]).kill()
+
             print('Disable CHECK MODULES')
 
-            process = subprocess.Popen(['python', command])
-            process.terminate()
-            process_cmd = subprocess.Popen(["cmd.exe"])
-            process_cmd.terminate()
+            print(pid_2)
+            os.kill(pid_2, 9)
+
+            if os.kill.returncode == 0:
+                print('Script executed successfully')
+            else:
+                print(f'Script execution failed with return code {os.kill.returncode}')
+        except Exception as e:
+            print('Error:', e)
+    def enable_keyboard_tester_function(self):
+        try:
+            self.keyboard_tester.destroy()
+            self.disable_keyboard_tester = ctk.CTkButton(self.master, width=245, height=30, text='DISABLE TEST KEYBOARD', font=('Helvetica bold',10),command=self.disable_keyboard_tester_function, corner_radius=0, fg_color='red')
+            self.disable_keyboard_tester.place(relx=0.185, rely=0.25, anchor='center')
+
+            print('Running command...')
+
+            process = subprocess.Popen(['python', script_path_keyboard])
+            time.sleep(2)
+            get_pid = process.pid
+            print(get_pid)
+
+            global pid_1
+            pid_1 = get_pid
+            print(pid_1)
 
             if process.returncode == 0:
                 print('Script executed successfully')
             else:
                 print(f'Script execution failed with return code {process.returncode}')
-        except Exception as e:
-            print('Error:', e)
+        except Exception as f:
+            print('Error:', f)
+    def disable_keyboard_tester_function(self):
+        try:
+    
+            self.disable_keyboard_tester.destroy()
+            self.keyboard_tester = ctk.CTkButton(self.master, width=245, height=30, text='ENABLE TEST KEYBOARD', font=('Helvetica bold',10),command=self.enable_keyboard_tester_function, corner_radius=0, fg_color='indigo')
+            self.keyboard_tester.place(relx=0.185, rely=0.25, anchor='center')
+            
+            command = (script_path_keyboard)
+            print('Running command...')
+
+            process = subprocess.Popen(['python', script_path_keyboard]).kill()
+            print(pid_1)
+            os.kill(pid_1, 9)
+
+            if process.returncode == 0:
+                print('Script executed successfully')
+            else:
+                print(f'Script execution failed with return code {process.returncode}')
+        except Exception as f2:
+            print('Error:', f2)
+
+            
+            
+    def hbrd_function(self):
+        try:
+            script_path = 'C:/Users/Chowfer/Desktop/CODE SPACE/Hibernate Sample.bat'
+            command = (script_path)
+            print('Running command...')
+
+            process = subprocess.Popen([command])
+            process()
+            if process.returncode == 0:
+                print('Script executed successfully')
+            else:
+                print(f'Script execution failed with return code {process.returncode}')
+        except Exception as g:
+            print('Error:', g)
 
 class NewClass:
     def Software_Exit(self):
