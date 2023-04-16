@@ -1,0 +1,2 @@
+print("mako")
+io.read()

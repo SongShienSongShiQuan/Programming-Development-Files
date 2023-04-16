@@ -1,0 +1,17 @@
+languages = ['C++','Javascript','Python','Mako']
+
+for lang in languages:
+    print(lang)
+    break #Breaks the code instantly after the first interation of the loop.
+
+print('Done')
+
+languages = ['C++','Javascript','Python','Mako']
+
+for lang in languages:
+    if lang == 'Mako':
+        continue #If continue keyword is used then the script will run as it should except if there is an if statement ex: if lang == 'Mako': then it will just cotinue and skip it.
+    print(lang)
+    
+
+print('Done')
