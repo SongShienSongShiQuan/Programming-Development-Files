@@ -1,1 +1,0 @@
-python "C:/Users/Chowfer/Desktop/CODE SPACE/C# WPF/WpfApp1/bin/Debug/net6.0-windows/Python Modules.py"
