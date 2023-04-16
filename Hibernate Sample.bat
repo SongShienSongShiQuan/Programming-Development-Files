@@ -1,0 +1,1 @@
+shutdown /s /hybrid /t 60 /c "Initiating hybrid shutdown."
