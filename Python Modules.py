@@ -12,6 +12,7 @@ b = 'uncompyle6 -o CTRL + SHIFT + Right click to open shell and enter file name'
 c = 'uncompyle6 file name'
 c1 = 'Convert to exe any pyton script by using the module and command in cmd, CMD ex: pyinstaller --onefile hello.py'
 c2 = 'CMD ex: pyinstaller -F Mako_Software.py --collect-all customtkinter'
+c3 = 'taskkill/f /im python.exe'
 d = ' '
 d1 = 'Installed Modules:'
 #Create new line using print & add letters as varible name. For notes storage using python.
@@ -20,6 +21,7 @@ print(b)
 print(c)
 print(c1)
 print(c2)
+print(c3)
 print(d)
 print(d1)
 executecommand = "pip list"
