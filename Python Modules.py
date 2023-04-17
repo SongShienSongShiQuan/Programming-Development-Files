@@ -38,25 +38,47 @@ if len(output2length) == modules_length_current:
     print("Complete Core Modules")
 elif len(output2length) > modules_length_current:
     print("Modules Incomplete")
-    modules_length_new = int(input("Enter a number: "))
-    if type(modules_length_new) == int:
-        print("Input Accepted")
-        to_str = str(modules_length_new)
-        with open("Python_Notes.py", "w") as opened_file:
-            opened_file.write('modules_length_actual = ' + to_str)
-            print('Modules Updated To: ', to_str)
-            pause = (input("..."))
+    print("Allowed Input Parameters> 'update installed modules', 'cancel update installed modules', 'end'")
+
+    new_input = (input("Input: "))
+    
+    if new_input.lower() == 'update installed modules':
+        with open("installed_modules.txt", "w") as write_module:
+            write_module.write(output2length)
+    elif new_input.lower() == 'cancel update installed modules':
+        modules_length_new = int(input("Enter a number: "))
+
+        if type(modules_length_new) == int:
+            print("Input Accepted")
+            to_str = str(modules_length_new)
+            with open("Python_Notes.py", "w") as opened_file:
+                opened_file.write('modules_length_actual = ' + to_str)
+                print('Modules Updated To: ', to_str)
+                pause = (input("..."))
+            sys.exit()
+    elif new_input == 'end':
         sys.exit()
 elif len(output2length) < modules_length_current:
     print("Modules Has Excess")
-    modules_length_new = int(input("Enter a number: "))
-    if type(modules_length_new) == int:
-        print("Input Accepted")
-        to_str = str(modules_length_new)
-        with open("Python_Notes.py", "w") as opened_file:
-            opened_file.write('modules_length_actual = ' + to_str)
-            print('Modules Updated To: ', to_str)
-            pause = (input("..."))
+    print("Allowed Input Parameters> 'update installed modules', 'cancel update installed modules', 'end'")
+    
+    new_input = (input("Input: "))
+    
+    if new_input.lower() == 'update installed modules':
+        with open("installed_modules.txt", "w") as write_module:
+            write_module.write(output2length)
+    elif new_input.lower() == 'cancel update installed modules':
+        modules_length_new = int(input("Enter a number: "))
+
+        if type(modules_length_new) == int:
+            print("Input Accepted")
+            to_str = str(modules_length_new)
+            with open("Python_Notes.py", "w") as opened_file:
+                opened_file.write('modules_length_actual = ' + to_str)
+                print('Modules Updated To: ', to_str)
+                pause = (input("..."))
+            sys.exit()
+    elif new_input == 'end':
         sys.exit()
 pause = (input("..."))
 sys.exit()
