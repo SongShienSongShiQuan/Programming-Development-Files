@@ -22,6 +22,7 @@ import os
 import subprocess
 from PIL import Image, ImageTk, ImageFilter
 import threading
+import psutil
 
 action = False
 Set_Action_True = ']'
@@ -77,6 +78,9 @@ class Aplikasi:
         framebackgroundcheck_hbrd = ctk.CTkFrame(self.master, width=420, height=30, fg_color="black", corner_radius=100)
         framebackgroundcheck_hbrd.place(relx=0.69, rely=0.3, anchor='center')
 
+        framebackground_cpu_usage = ctk.CTkFrame(self.master, width=420, height=30, fg_color="black", corner_radius=100)
+        framebackground_cpu_usage.place(relx=0.69, rely=0.35, anchor='center')
+
         softwarename = ctk.CTkLabel(self.master, text='Xin Chào  -  Open Source GITHUB  -  Mako_Software.py', font=('Helvetica bold',26), bg_color="grey")
         softwarename.place(relx=0.5, rely=0.035, anchor='center')
 
@@ -129,6 +133,15 @@ class Aplikasi:
 
         self.hbrd_ = ctk.CTkButton(self.master, width=245, height=30, text='Hybrid Shutdown', font=('Helvetica bold',10),command=self.hbrd_function, corner_radius=0, fg_color='indigo')
         self.hbrd_.place(relx=0.185, rely=0.3, anchor='center')
+
+        self.outputtext5 = ctk.CTkLabel(self.master, text='OUTPUT', font=('Helvetica bold',10), bg_color="black", height=0.5)
+        self.outputtext5.place(relx=0.45, rely=0.35, anchor='center')
+
+        self.cpu_usage_output = ctk.CTkLabel(self.master, text='{CPU Usage: }', font=('Helvetica bold',26), bg_color="black")
+        self.cpu_usage_output.place(relx=0.7, rely=0.35, anchor='center')
+        
+        self.cpu_usage = ctk.CTkButton(self.master, width=245, height=30, text='Get CPU Usage', font=('Helvetica bold',10),command=self.cpu_usage_function, corner_radius=0, fg_color='indigo')
+        self.cpu_usage.place(relx=0.185, rely=0.35, anchor='center')
 
     def increment(self):
         try:
@@ -319,6 +332,14 @@ class Aplikasi:
                 print(f'Script execution failed with return code {process.returncode}')
         except Exception as g:
             print('Error:', g)
+    def cpu_usage_function(self):
+        try:
+            get_cpu_usage = psutil.cpu_percent(4)
+            print(psutil.virtual_memory())
+            self.cpu_usage_output.configure(self.master, text=('CPU Usage: ', get_cpu_usage), font=('Helvetica bold',26), bg_color="black")
+            print('The CPU usage is: ', get_cpu_usage)
+        except Exception as h:
+            print('Error:', h)
 
 class NewClass:
     def Software_Exit(self):
