@@ -51,7 +51,7 @@ elif len(output2length) > modules_length_current:
         if type(modules_length_new) == int:
             print("Input Accepted")
             to_str = str(modules_length_new)
-            with open("Python_Notes.py", "w") as opened_file:
+            with open("Modules_List.py", "w") as opened_file:
                 opened_file.write('modules_length_actual = ' + to_str)
                 print('Modules Updated To: ', to_str)
                 pause = (input("..."))
@@ -73,7 +73,7 @@ elif len(output2length) < modules_length_current:
         if type(modules_length_new) == int:
             print("Input Accepted")
             to_str = str(modules_length_new)
-            with open("Python_Notes.py", "w") as opened_file:
+            with open("Modules_List.py", "w") as opened_file:
                 opened_file.write('modules_length_actual = ' + to_str)
                 print('Modules Updated To: ', to_str)
                 pause = (input("..."))
