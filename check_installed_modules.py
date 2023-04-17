@@ -19,3 +19,4 @@ with open("installed_modules.txt") as read_module:
                     print("Complete Core Modules")
             elif not read_file1 == read_file2:
                     print("Modules Incomplete or Exceeded")
+pause = input('...')
