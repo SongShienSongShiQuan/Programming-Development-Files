@@ -56,6 +56,8 @@ msedge_command = "msedge.bat"
 visual_studio_code_path = "vsc.bat"
 visual_studio_path = "vs.bat"
 blender_exe_path = "blender.bat"
+environment_variable_path = "sysdm.cpl.bat"
+security_path = "security.bat"
 
 #PID IDs, set variable to global in functions ex: "global pid_1"
 #PID is acquired because 'script_path_example' is added as a variable and it starts the process before being called.
@@ -274,6 +276,9 @@ class Aplikasi:
         frame_windows_application = ctk.CTkFrame(self.master, width=425, height=70, fg_color="black", corner_radius=0)
         frame_windows_application.place(relx=0.69, rely=0.943, anchor='center')
 
+        frame_windows_application_line = ctk.CTkFrame(self.master, width=5, height=70, fg_color="gray", corner_radius=0)
+        frame_windows_application_line.place(relx=0.8, rely=0.943, anchor='center')
+
         self.Windows_Default_Application_output = ctk.CTkLabel(self.master, text='Add to \'Environment Variables\' the apps below.', font=('Helvetica bold',10), bg_color="black")
         self.Windows_Default_Application_output.place(relx=0.2, rely=0.88, anchor='center')
 
@@ -348,8 +353,15 @@ class Aplikasi:
         openedimage_environment_variable_icon = Image.open(environment_variable_icon_open)
         resize_image_environment_variable_icon = openedimage_environment_variable_icon.resize((50, 50))
         image_environment_variable_icon = ImageTk.PhotoImage(resize_image_environment_variable_icon)
-        self.initiate_hibernate = ctk.CTkButton(self.master, width=50, height=50, text='', font=('Helvetica bold',10),command=self.environment_variable_function, corner_radius=0, fg_color='black', hover_color='indigo', image=image_environment_variable_icon)
-        self.initiate_hibernate.place(relx=0.62, rely=0.95, anchor='center')
+        self.environment_variable = ctk.CTkButton(self.master, width=50, height=50, text='', font=('Helvetica bold',10),command=self.environment_variable_function, corner_radius=0, fg_color='black', hover_color='indigo', image=image_environment_variable_icon)
+        self.environment_variable.place(relx=0.62, rely=0.95, anchor='center')
+
+        security_icon_open = "security_icon.png"
+        openedimage_security_icon = Image.open(security_icon_open)
+        resize_image_security_icon = openedimage_security_icon.resize((50, 50))
+        image_security_icon = ImageTk.PhotoImage(resize_image_security_icon)
+        self.security = ctk.CTkButton(self.master, width=50, height=50, text='', font=('Helvetica bold',10),command=self.security_function, corner_radius=0, fg_color='black', hover_color='indigo', image=image_security_icon)
+        self.security.place(relx=0.86, rely=0.95, anchor='center')
 
     def increment(self):
         try:
@@ -385,7 +397,6 @@ class Aplikasi:
 
 
             process = subprocess.Popen(['python', command])
-            process_cmd = subprocess.Popen(["cmd.exe"])
 
             time.sleep(2)
             get_pid = process.pid
@@ -438,7 +449,6 @@ class Aplikasi:
             print('Enable CHECK MODULES')
 
             process = subprocess.Popen(['python', command])
-            process_cmd = subprocess.Popen(["cmd.exe"])
 
             time.sleep(2)
             get_pid = process.pid
@@ -764,10 +774,14 @@ class Aplikasi:
             print('Error protect_process_CPU_function Loc>sec_a0038:', error_output)
     def environment_variable_function(self):
         try:
-            environment_variable_path = "sysdm.cpl.bat"
             process = subprocess.run(environment_variable_path)
         except Exception as error_output:
             print('Error protect_process_CPU_function Loc>sec_a0039:', error_output)
+    def security_function(self):
+        try:
+            process = subprocess.run(security_path)
+        except Exception as error_output:
+            print('Error protect_process_CPU_function Loc>sec_a0040:', error_output)
 class NewClass:
     def Software_Exit(self):
         print('Software Exited')
