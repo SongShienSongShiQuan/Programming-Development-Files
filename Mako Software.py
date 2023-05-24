@@ -58,6 +58,9 @@ visual_studio_path = "vs.bat"
 blender_exe_path = "blender.bat"
 environment_variable_path = "sysdm.cpl.bat"
 security_path = "security.bat"
+roblox_studio_path = "roblox_studio.bat"
+Fan_Control_Command = "PrecisionX_x64.bat"
+taskmanager_command = "taskmgr_exe.bat"
 
 #PID IDs, set variable to global in functions ex: "global pid_1"
 #PID is acquired because 'script_path_example' is added as a variable and it starts the process before being called.
@@ -124,6 +127,12 @@ class Aplikasi:
         
         frame_Release_RAM_Usage = ctk.CTkFrame(self.master, width=420, height=30, fg_color="black", corner_radius=100)
         frame_Release_RAM_Usage.place(relx=0.69, rely=0.65, anchor='center')
+        
+        frame_Fan_Control = ctk.CTkFrame(self.master, width=420, height=30, fg_color="black", corner_radius=100)
+        frame_Fan_Control.place(relx=0.69, rely=0.70, anchor='center')
+
+        frame_taskmanager = ctk.CTkFrame(self.master, width=420, height=30, fg_color="black", corner_radius=100)
+        frame_taskmanager.place(relx=0.69, rely=0.75, anchor='center')
 
         softwarename = ctk.CTkLabel(self.master, text='Xin Chào  -  Open Source GITHUB  -  Mako_Software.py', font=('Helvetica bold',26), bg_color="grey")
         softwarename.place(relx=0.5, rely=0.035, anchor='center')
@@ -271,7 +280,27 @@ class Aplikasi:
         self.Release_RAM_Usage_output = ctk.CTkLabel(self.master, text='Release RAM', font=('Helvetica bold',20), bg_color="black")
         self.Release_RAM_Usage_output.place(relx=0.62, rely=0.65, anchor='center')
 
-        #Windows Default Application Below
+        self.outputtext11 = ctk.CTkLabel(self.master, text='OUTPUT', font=('Helvetica bold',10), bg_color="black", height=0.5)
+        self.outputtext11.place(relx=0.45, rely=0.70, anchor='center')
+
+        self.Fan_Control = ctk.CTkButton(self.master, width=245, height=30, text='Fan Control', font=('Helvetica bold',10),command=self.Fan_Control_Function, corner_radius=0, fg_color='indigo', hover_color='darkred')
+        self.Fan_Control.place(relx=0.185, rely=0.70, anchor='center')
+
+        self.Fan_Control_output = ctk.CTkLabel(self.master, text='Fan Control Software', font=('Helvetica bold',20), bg_color="black")
+        self.Fan_Control_output.place(relx=0.70, rely=0.70, anchor='center')
+
+        self.outputtext12 = ctk.CTkLabel(self.master, text='OUTPUT', font=('Helvetica bold',10), bg_color="black", height=0.5)
+        self.outputtext12.place(relx=0.45, rely=0.75, anchor='center')
+
+        self.Task_Manager = ctk.CTkButton(self.master, width=245, height=30, text='Task Manager', font=('Helvetica bold',10),command=self.Task_Manager_Function, corner_radius=0, fg_color='indigo', hover_color='darkred')
+        self.Task_Manager.place(relx=0.185, rely=0.75, anchor='center')
+
+        self.Task_Manager_output = ctk.CTkLabel(self.master, text='Task Manager', font=('Helvetica bold',20), bg_color="black")
+        self.Task_Manager_output.place(relx=0.70, rely=0.75, anchor='center')
+
+        ###################################
+        #Windows Default Application Below#
+        ###################################
 
         frame_windows_application = ctk.CTkFrame(self.master, width=425, height=70, fg_color="black", corner_radius=0)
         frame_windows_application.place(relx=0.69, rely=0.943, anchor='center')
@@ -342,19 +371,22 @@ class Aplikasi:
         self.kill_blender = ctk.CTkButton(self.master, width=15, height=15, text='X', font=('Helvetica bold',8),command=self.kill_blender_function, corner_radius=0, fg_color='gray', hover_color='darkred')
         self.kill_blender.place(relx=0.56, rely=0.92, anchor='center')
 
-        shutdown_icon_open = "shutdown_icon.png"
-        openedimage_shutdown_icon = Image.open(shutdown_icon_open)
-        resize_image_shutdown_icon = openedimage_shutdown_icon.resize((50, 50))
-        image_shutdown_icon = ImageTk.PhotoImage(resize_image_shutdown_icon)
-        self.initiate_hibernate = ctk.CTkButton(self.master, width=50, height=50, text='', font=('Helvetica bold',10),command=self.hibernate_function, corner_radius=0, fg_color='black', hover_color='indigo', image=image_shutdown_icon)
-        self.initiate_hibernate.place(relx=0.95, rely=0.95, anchor='center')
-
         environment_variable_icon_open = "environment_variable_icon.png"
         openedimage_environment_variable_icon = Image.open(environment_variable_icon_open)
         resize_image_environment_variable_icon = openedimage_environment_variable_icon.resize((50, 50))
         image_environment_variable_icon = ImageTk.PhotoImage(resize_image_environment_variable_icon)
         self.environment_variable = ctk.CTkButton(self.master, width=50, height=50, text='', font=('Helvetica bold',10),command=self.environment_variable_function, corner_radius=0, fg_color='black', hover_color='indigo', image=image_environment_variable_icon)
-        self.environment_variable.place(relx=0.62, rely=0.95, anchor='center')
+        self.environment_variable.place(relx=0.71, rely=0.95, anchor='center')
+
+        roblox_studio_icon_open = "roblox_studio_icon.png"
+        openedimage_roblox_studio_icon = Image.open(roblox_studio_icon_open)
+        resize_image_roblox_studio_icon = openedimage_roblox_studio_icon.resize((51, 50))
+        image_roblox_studio_icon = ImageTk.PhotoImage(resize_image_roblox_studio_icon)
+        self.launch_roblox_studio = ctk.CTkButton(self.master, width=50, height=50, text='', font=('Helvetica bold',10),command=self.launch_roblox_studio_function, corner_radius=0, fg_color='black', hover_color='indigo', image=image_roblox_studio_icon)
+        self.launch_roblox_studio.place(relx=0.62, rely=0.95, anchor='center')
+
+        self.kill_roblox_studio = ctk.CTkButton(self.master, width=15, height=15, text='X', font=('Helvetica bold',8),command=self.kill_roblox_studio_function, corner_radius=0, fg_color='gray', hover_color='darkred')
+        self.kill_roblox_studio.place(relx=0.65, rely=0.92, anchor='center')
 
         security_icon_open = "security_icon.png"
         openedimage_security_icon = Image.open(security_icon_open)
@@ -362,6 +394,13 @@ class Aplikasi:
         image_security_icon = ImageTk.PhotoImage(resize_image_security_icon)
         self.security = ctk.CTkButton(self.master, width=50, height=50, text='', font=('Helvetica bold',10),command=self.security_function, corner_radius=0, fg_color='black', hover_color='indigo', image=image_security_icon)
         self.security.place(relx=0.86, rely=0.95, anchor='center')
+
+        shutdown_icon_open = "shutdown_icon.png"
+        openedimage_shutdown_icon = Image.open(shutdown_icon_open)
+        resize_image_shutdown_icon = openedimage_shutdown_icon.resize((50, 50))
+        image_shutdown_icon = ImageTk.PhotoImage(resize_image_shutdown_icon)
+        self.initiate_hibernate = ctk.CTkButton(self.master, width=50, height=50, text='', font=('Helvetica bold',10),command=self.hibernate_function, corner_radius=0, fg_color='black', hover_color='indigo', image=image_shutdown_icon)
+        self.initiate_hibernate.place(relx=0.95, rely=0.95, anchor='center')
 
     def increment(self):
         try:
@@ -493,7 +532,7 @@ class Aplikasi:
     def enable_keyboard_tester_function(self):
         try:
             self.KEY_Get_Input.destroy()
-            self.disable_KEY_Get_Input = ctk.CTkButton(self.master, width=245, height=30, text='DISABLE KEY_Get_Input', font=('Helvetica bold',10),command=self.disable_keyboard_tester_function, corner_radius=0, fg_color='red')
+            self.disable_KEY_Get_Input = ctk.CTkButton(self.master, width=245, height=30, text='DISABLE KEY_Get_Input', font=('Helvetica bold',10),command=self.disable_keyboard_tester_function, corner_radius=0, fg_color='red', hover_color='darkred')
             self.disable_KEY_Get_Input.place(relx=0.185, rely=0.25, anchor='center')
             self.KEY_Get_Input_output.configure(self.master, text='KEY_Get_Input: ENABLED', font=('Helvetica bold',26), bg_color="black")
             self.KEY_Get_Input_indicator.configure(self.master, width=10, height=30, fg_color="darkgreen", corner_radius=0)
@@ -519,7 +558,7 @@ class Aplikasi:
         try:
     
             self.disable_KEY_Get_Input.destroy()
-            self.KEY_Get_Input = ctk.CTkButton(self.master, width=245, height=30, text='ENABLE KEY_Get_Input', font=('Helvetica bold',10),command=self.enable_keyboard_tester_function, corner_radius=0, fg_color='indigo')
+            self.KEY_Get_Input = ctk.CTkButton(self.master, width=245, height=30, text='ENABLE KEY_Get_Input', font=('Helvetica bold',10),command=self.enable_keyboard_tester_function, corner_radius=0, fg_color='indigo', hover_color='darkred')
             self.KEY_Get_Input.place(relx=0.185, rely=0.25, anchor='center')
             self.KEY_Get_Input_output.configure(self.master, text='KEY_Get_Input: DISABLED', font=('Helvetica bold',26), bg_color="black")
             self.KEY_Get_Input_indicator.configure(self.master, width=10, height=30, fg_color="darkred", corner_radius=0)
@@ -631,12 +670,12 @@ class Aplikasi:
         try:
             process = subprocess.Popen(['python', Add_log_files])
         except Exception as error_output:
-            print('Error get_log_txt_files Loc>sec_a0016:', error_output)
+            print('Error add_log_files_function Loc>sec_a0016:', error_output)
     def sub_log_files_function(self):
         try:
             process = subprocess.Popen(['python', Sub_log_files])
         except Exception as error_output:
-            print('Error get_log_txt_files Loc>sec_a0017:', error_output)
+            print('Error sub_log_files_function Loc>sec_a0017:', error_output)
     def protect_all_process_RAM_function(self):
         try:
             self.protect_all_process_RAM_indicator.configure(self.master, width=10, height=30, fg_color="darkgreen", corner_radius=0)
@@ -652,7 +691,7 @@ class Aplikasi:
             pid_5 = get_pid
             print(pid_5)
         except Exception as error_output:
-            print('Error protect_process_CPU_function Loc>sec_a0018:', error_output)
+            print('Error protect_all_process_RAM_function Loc>sec_a0018:', error_output)
     def disable_protect_all_process_RAM_function(self):
         try:
             self.protect_all_process_RAM_indicator.configure(self.master, width=10, height=30, fg_color="darkred", corner_radius=0)
@@ -664,24 +703,24 @@ class Aplikasi:
             print(pid_5)
             os.kill(pid_5, 9)
         except Exception as error_output:
-            print('Error protect_process_CPU_function Loc>sec_a0019:', error_output)
+            print('Error disable_protect_all_process_RAM_function Loc>sec_a0019:', error_output)
     def add_program_to_list_function(self):
         try:
             process = subprocess.Popen(['python', add_program_to_list])
         except Exception as error_output:
-            print('Error protect_process_CPU_function Loc>sec_a0020:', error_output)
+            print('Error add_program_to_list_function Loc>sec_a0020:', error_output)
     def sub_program_to_list_function(self):
         try:
             process = subprocess.Popen(['python', sub_program_to_list])
         except Exception as error_output:
-            print('Error protect_process_CPU_function Loc>sec_a0021:', error_output)
+            print('Error sub_program_to_list_function Loc>sec_a0021:', error_output)
     def Activate_Release_RAM_Usage_(self):
         try:
             self.Release_RAM_Usage.destroy()
             self.Init_Release_RAM_Usage = ctk.CTkButton(self.master, width=245, height=30, text='Release RAM Usage', font=('Helvetica bold',10),command=self.Init_Release_RAM_Usage_, corner_radius=0, fg_color='indigo', hover_color='darkred')
             self.Init_Release_RAM_Usage.place(relx=0.185, rely=0.65, anchor='center')
         except Exception as error_output:
-            print('Error get_log_txt_files Loc>sec_a0022:', error_output)
+            print('Error Activate_Release_RAM_Usage_ Loc>sec_a0022:', error_output)
     def Init_Release_RAM_Usage_(self):
         try:
             self.Init_Release_RAM_Usage.destroy()
@@ -689,99 +728,132 @@ class Aplikasi:
             self.Release_RAM_Usage.place(relx=0.185, rely=0.65, anchor='center')
             process = subprocess.Popen(['python', Release_RAM_Usage_path])
         except Exception as error_output:
-            print('Error get_log_txt_files Loc>sec_a0023:', error_output)
+            print('Error Init_Release_RAM_Usage_ Loc>sec_a0023:', error_output)
     def Custom_Crosshair_Overlay(self):
         try:
             raise NotImplementedError('Function returns nothing.')
         except Exception as error_output:
-            print('Error get_log_txt_files Loc>sec_a0024:', error_output)
+            print('Error Custom_Crosshair_Overlay Loc>sec_a0024:', error_output)
     def initiate_developer_workspace_python_csharp_lua(self):
         try:
             raise NotImplementedError('Function returns nothing.')
         except Exception as error_output:
-            print('Error get_log_txt_files Loc>sec_a0025:', error_output)
+            print('Error initiate_developer_workspace_python_csharp_lua Loc>sec_a0025:', error_output)
+    def Fan_Control_Function(self):
+        try:
+            process = subprocess.run(Fan_Control_Command)
+        except Exception as error_output:
+            print('Error Fan_Control_Function Loc>sec_a0026:', error_output)
+    def Task_Manager_Function(self):
+        try:
+            self.Task_Manager.destroy()
+            self.Kill_Task_Manager = ctk.CTkButton(self.master, width=245, height=30, text='Task Manager', font=('Helvetica bold',10),command=self.Kill_Task_Manager_Function, corner_radius=0, fg_color='red', hover_color='darkred')
+            self.Kill_Task_Manager.place(relx=0.185, rely=0.75, anchor='center')
+            process = subprocess.run(taskmanager_command)
+        except Exception as error_output:
+            print('Error protect_all_process_RAM_function Loc>sec_a0018:', error_output)
+    def Kill_Task_Manager_Function(self):
+        try:
+            self.Kill_Task_Manager.destroy()
+            self.Task_Manager = ctk.CTkButton(self.master, width=245, height=30, text='Task Manager', font=('Helvetica bold',10),command=self.Task_Manager_Function, corner_radius=0, fg_color='indigo', hover_color='darkred')
+            self.Task_Manager.place(relx=0.185, rely=0.75, anchor='center')
+
+            process = subprocess.run('taskkill /im taskmgr.exe /F')
+        except Exception as error_output:
+            print('Error disable_protect_all_process_RAM_function Loc>sec_a0019:', error_output)
     def launch_explorer_func(self):
         try:
             process = subprocess.run(explorer_command)
         except Exception as error_output:
-            print('Error get_log_txt_files Loc>sec_a0026:', error_output)
+            print('Error launch_explorer_func Loc>sec_a0027:', error_output)
     def kill_explorer_func(self):
         try:
             end_process = 'taskkill /im explorer.exe /F'
             process = subprocess.Popen(end_process)
         except Exception as error_output:
-            print('Error get_log_txt_files Loc>sec_a0027:', error_output)
+            print('Error kill_explorer_func Loc>sec_a0028:', error_output)
     def launch_cmd_func(self):
         try:
             process = subprocess.run(cmd_command)
         except Exception as error_output:
-            print('Error get_log_txt_files Loc>sec_a0028:', error_output)
+            print('Error launch_cmd_func Loc>sec_a0029:', error_output)
     def kill_cmd_func(self):
         try:
             end_process = 'taskkill /im cmd.exe /F'
             process = subprocess.Popen(end_process)
         except Exception as error_output:
-            print('Error get_log_txt_files Loc>sec_a0029:', error_output)
+            print('Error kill_cmd_func Loc>sec_a0030:', error_output)
     def launch_msedge_func(self):
         try:
             process = subprocess.run(msedge_command)
         except Exception as error_output:
-            print('Error get_log_txt_files Loc>sec_a0030:', error_output)
+            print('Error launch_msedge_func Loc>sec_a0031:', error_output)
     def kill_msedge_func(self):
         try:
             end_process = 'taskkill /im msedge.exe /F'
             process = subprocess.Popen(end_process)
         except Exception as error_output:
-            print('Error get_log_txt_files Loc>sec_a0031:', error_output)
+            print('Error kill_msedge_func Loc>sec_a0032:', error_output)
     def launch_visual_studio_code_function(self):
         try:
             process = subprocess.run(visual_studio_code_path)
         except Exception as error_output:
-            print('Error protect_process_CPU_function Loc>sec_a0032:', error_output)
+            print('Error launch_visual_studio_code_function Loc>sec_a0033:', error_output)
     def kill_visual_studio_code_function(self):
         try:
             end_process = 'taskkill /im Code.exe /F'
             process = subprocess.Popen(end_process)
         except Exception as error_output:
-            print('Error protect_process_CPU_function Loc>sec_a0033:', error_output)
+            print('Error kill_visual_studio_code_function Loc>sec_a0034:', error_output)
     def launch_visual_studio_function(self):
         try:
             process = subprocess.run(visual_studio_path)
         except Exception as error_output:
-            print('Error protect_process_CPU_function Loc>sec_a0034:', error_output)
+            print('Error launch_visual_studio_function Loc>sec_a0035:', error_output)
     def kill_visual_studio_function(self):
         try:
             end_process = 'taskkill /im devenv.exe /F'
             process = subprocess.Popen(end_process)
         except Exception as error_output:
-            print('Error protect_process_CPU_function Loc>sec_a0035:', error_output)
+            print('Error kill_visual_studio_function Loc>sec_a0036:', error_output)
     def launch_blender_function(self):
         try:
             process = subprocess.run(blender_exe_path)
         except Exception as error_output:
-            print('Error protect_process_CPU_function Loc>sec_a0036:', error_output)
+            print('Error launch_blender_function Loc>sec_a0037:', error_output)
     def kill_blender_function(self):
         try:
             end_process = 'taskkill /im blender.exe /F'
             process = subprocess.Popen(end_process)
         except Exception as error_output:
-            print('Error protect_process_CPU_function Loc>sec_a0037:', error_output)
+            print('Error kill_blender_function Loc>sec_a0038:', error_output)
     def hibernate_function(self):
         try:
             process_hibernate = 'shutdown /h'
             process = subprocess.Popen(process_hibernate)
         except Exception as error_output:
-            print('Error protect_process_CPU_function Loc>sec_a0038:', error_output)
+            print('Error hibernate_function Loc>sec_a0039:', error_output)
     def environment_variable_function(self):
         try:
             process = subprocess.run(environment_variable_path)
         except Exception as error_output:
-            print('Error protect_process_CPU_function Loc>sec_a0039:', error_output)
+            print('Error environment_variable_function Loc>sec_a0040:', error_output)
     def security_function(self):
         try:
             process = subprocess.run(security_path)
         except Exception as error_output:
-            print('Error protect_process_CPU_function Loc>sec_a0040:', error_output)
+            print('Error security_function Loc>sec_a0041:', error_output)
+    def launch_roblox_studio_function(self):
+        try:
+            process = subprocess.run(roblox_studio_path)
+        except Exception as error_output:
+            print('Error launch_roblox_studio_function Loc>sec_a0042:', error_output)
+    def kill_roblox_studio_function(self):
+        try:
+            end_process = 'taskkill /im RobloxStudioBeta.exe /F'
+            process = subprocess.Popen(end_process)
+        except Exception as error_output:
+            print('Error kill_roblox_studio_function Loc>sec_a0043:', error_output)
 class NewClass:
     def Software_Exit(self):
         print('Software Exited')
