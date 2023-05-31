@@ -1,0 +1,22 @@
+<Window x:Class="KeyboardTrapping.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KeyboardTrapping"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        PreviewKeyDown="Window_PreviewKeyDown"
+        Title="Keyboard Trapping Demo" Height="280" Width="400" MinHeight="280" MinWidth="400">
+    <StackPanel Margin="10">
+        <TextBlock FontSize="20" Margin="10" HorizontalAlignment="Center" Foreground="Blue">Keyboard Trapping Demo</TextBlock>
+        <TextBlock TextWrapping="Wrap" Margin="10">Pressing certain keyboad keys will reveal popup messages. 
+            Try the right or left arrows, A or a, the space bar, the F2 key, the number 7,
+            Ctrl+G, Crtl+g, Ctrl+T or Ctrl+t.</TextBlock>
+        <Button Name="btnRightArrow" Click="btnRightArrow_Click" Margin="10">Right Arrow</Button>
+        <TextBlock Name="txtblk" Width="300" Height="20">
+            Type in the TextBox below and press the Enter key.
+        </TextBlock>
+        <TextBox Name="txtbox" KeyDown="OnKeyDownHandler" Margin="10" ></TextBox>
+    </StackPanel>
+</Window>

