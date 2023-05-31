@@ -1,0 +1,15 @@
+C:\Users\Chowfer\Desktop\CODE SPACE\C# WPF\Ping_C#\bin\Debug\net6.0-windows\Ping_C#.exe
+C:\Users\Chowfer\Desktop\CODE SPACE\C# WPF\Ping_C#\bin\Debug\net6.0-windows\Ping_C#.deps.json
+C:\Users\Chowfer\Desktop\CODE SPACE\C# WPF\Ping_C#\bin\Debug\net6.0-windows\Ping_C#.runtimeconfig.json
+C:\Users\Chowfer\Desktop\CODE SPACE\C# WPF\Ping_C#\bin\Debug\net6.0-windows\Ping_C#.dll
+C:\Users\Chowfer\Desktop\CODE SPACE\C# WPF\Ping_C#\bin\Debug\net6.0-windows\Ping_C#.pdb
+C:\Users\Chowfer\Desktop\CODE SPACE\C# WPF\Ping_C#\obj\Debug\net6.0-windows\Ping_C#.csproj.AssemblyReference.cache
+C:\Users\Chowfer\Desktop\CODE SPACE\C# WPF\Ping_C#\obj\Debug\net6.0-windows\Ping_C#.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Chowfer\Desktop\CODE SPACE\C# WPF\Ping_C#\obj\Debug\net6.0-windows\Ping_C#.AssemblyInfoInputs.cache
+C:\Users\Chowfer\Desktop\CODE SPACE\C# WPF\Ping_C#\obj\Debug\net6.0-windows\Ping_C#.AssemblyInfo.cs
+C:\Users\Chowfer\Desktop\CODE SPACE\C# WPF\Ping_C#\obj\Debug\net6.0-windows\Ping_C#.csproj.CoreCompileInputs.cache
+C:\Users\Chowfer\Desktop\CODE SPACE\C# WPF\Ping_C#\obj\Debug\net6.0-windows\Ping_C#.dll
+C:\Users\Chowfer\Desktop\CODE SPACE\C# WPF\Ping_C#\obj\Debug\net6.0-windows\refint\Ping_C#.dll
+C:\Users\Chowfer\Desktop\CODE SPACE\C# WPF\Ping_C#\obj\Debug\net6.0-windows\Ping_C#.pdb
+C:\Users\Chowfer\Desktop\CODE SPACE\C# WPF\Ping_C#\obj\Debug\net6.0-windows\Ping_C#.genruntimeconfig.cache
+C:\Users\Chowfer\Desktop\CODE SPACE\C# WPF\Ping_C#\obj\Debug\net6.0-windows\ref\Ping_C#.dll
