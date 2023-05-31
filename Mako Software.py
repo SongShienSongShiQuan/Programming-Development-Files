@@ -1,18 +1,3 @@
-from cProfile import label
-from concurrent.futures import thread
-from doctest import master
-from email.mime import image
-from enum import _auto_null
-from gc import get_stats
-from pdb import run
-from pydoc import doc
-from re import sub
-from runpy import run_module
-from string import whitespace
-import tkinter
-from turtle import back
-from types import NoneType
-from webbrowser import get
 import customtkinter as ctk
 from pyscreeze import center
 import tkinter
@@ -66,6 +51,8 @@ taskmanager_command = "taskmgr_exe.bat"
 init_dev_workspace = "initiate_developer_workspace.bat"
 ddos_path = "LAN_DDOS_C#.py"
 ddos_settings_path = "DDOS_SETTINGS.py"
+web_ddos_path = "Ping_Web_C#.bat"
+web_ddos_settings_path = "WEB_DDOS_SETTINGS.py"
 
 #PID IDs, set variable to global in functions ex: "global pid_1"
 #PID is acquired because 'script_path_example' is added as a variable and it starts the process before being called.
@@ -328,14 +315,23 @@ class Aplikasi:
         self.outputtext14 = ctk.CTkLabel(self.master, text='OUTPUT', font=('Helvetica bold',10), bg_color="black", height=0.5)
         self.outputtext14.place(relx=0.45, rely=0.85, anchor='center')
 
-        self.DDOS_output = ctk.CTkLabel(self.master, text='Distributed\n Denial Of Service', font=('Helvetica bold',10), bg_color="black")
-        self.DDOS_output.place(relx=0.60, rely=0.85, anchor='center')
+        self.DDOS_output = ctk.CTkLabel(self.master, text='Distributed\n Denial Of Service', font=('Helvetica bold',9), bg_color="black")
+        self.DDOS_output.place(relx=0.54, rely=0.85, anchor='center')
 
-        self.DDOS = ctk.CTkButton(self.master, width=245, height=30, text='LAN DDOS', font=('Helvetica bold',10),command=self.DDOS_Function, corner_radius=0, fg_color='indigo', hover_color='darkred')
-        self.DDOS.place(relx=0.185, rely=0.85, anchor='center')
+        self.DDOS = ctk.CTkButton(self.master, width=122, height=30, text='LAN DDOS', font=('Helvetica bold',10),command=self.DDOS_Function, corner_radius=0, fg_color='indigo', hover_color='darkred')
+        self.DDOS.place(relx=0.099, rely=0.85, anchor='center')
+        
+        self.WEB_DDOS = ctk.CTkButton(self.master, width=122, height=30, text='WEB DDOS', font=('Helvetica bold',10),command=self.WEB_DDOS_Function, corner_radius=0, fg_color='indigo', hover_color='darkred')
+        self.WEB_DDOS.place(relx=0.274, rely=0.85, anchor='center')
 
-        self.add_IP_ADDRESS = ctk.CTkButton(self.master, text='INPUT IP ADDRESS', font=('Helvetica bold',10), command=self.DDOS_Input_IP_ADDRESS, corner_radius=0,fg_color='red', hover_color='darkred', width=75, height=20)
-        self.add_IP_ADDRESS.place(relx=0.90, rely=0.85, anchor='center')
+        self.ADD_INSTANCE_WEB_DDOS = ctk.CTkButton(self.master, width=50, height=20, text='+INSTANCE', font=('Helvetica bold',10),command=self.WEB_DDOS_Function, corner_radius=0, fg_color='indigo', hover_color='darkred')
+        self.ADD_INSTANCE_WEB_DDOS.place(relx=0.645, rely=0.85, anchor='center')
+
+        self.add_IP_ADDRESS = ctk.CTkButton(self.master, text='LOCAL', font=('Helvetica bold',10), command=self.DDOS_Input_IP_ADDRESS, corner_radius=0,fg_color='red', hover_color='darkred', width=50, height=20)
+        self.add_IP_ADDRESS.place(relx=0.853, rely=0.85, anchor='center')
+
+        self.add_IP_ADDRESS_WEB = ctk.CTkButton(self.master, text='WEB', font=('Helvetica bold',10), command=self.WEB_DDOS_Input_IP_ADDRESS, corner_radius=0,fg_color='red', hover_color='darkred', width=50, height=20)
+        self.add_IP_ADDRESS_WEB.place(relx=0.93, rely=0.85, anchor='center')
 
         self.KILL_DDOS_EXTRAS = ctk.CTkButton(self.master, text='KILL DDOS', font=('Helvetica bold',10), command=self.KILL_DDOS_EXTRAS_FUNCTION, corner_radius=0,fg_color='red', hover_color='darkred', width=75, height=20)
         self.KILL_DDOS_EXTRAS.place(relx=0.75, rely=0.85, anchor='center')
@@ -836,8 +832,8 @@ class Aplikasi:
     def DDOS_Function(self):
         try:
             self.DDOS.destroy()
-            self.Kill_DDOS = ctk.CTkButton(self.master, width=245, height=30, text='LAN DDOS', font=('Helvetica bold',10),command=self.Kill_DDOS_Function, corner_radius=0, fg_color='red', hover_color='darkred')
-            self.Kill_DDOS.place(relx=0.185, rely=0.85, anchor='center')
+            self.Kill_DDOS = ctk.CTkButton(self.master, width=122, height=30, text='LAN DDOS', font=('Helvetica bold',10),command=self.Kill_DDOS_Function, corner_radius=0, fg_color='red', hover_color='darkred')
+            self.Kill_DDOS.place(relx=0.099, rely=0.85, anchor='center')
             process = subprocess.Popen(['python', ddos_path])
             time.sleep(2)
             get_pid = process.pid
@@ -851,10 +847,29 @@ class Aplikasi:
     def Kill_DDOS_Function(self):
         try:
             self.Kill_DDOS.destroy()
-            self.DDOS = ctk.CTkButton(self.master, width=245, height=30, text='LAN DDOS', font=('Helvetica bold',10),command=self.DDOS_Function, corner_radius=0, fg_color='indigo', hover_color='darkred')
-            self.DDOS.place(relx=0.185, rely=0.85, anchor='center')
+            self.DDOS = ctk.CTkButton(self.master, width=122, height=30, text='LAN DDOS', font=('Helvetica bold',10),command=self.DDOS_Function, corner_radius=0, fg_color='indigo', hover_color='darkred')
+            self.DDOS.place(relx=0.099, rely=0.85, anchor='center')
 
-            process = subprocess.run('taskkill /im cmd.exe /F /T')
+            process = subprocess.run('taskkill /im Ping_Web_C#.exe /im Ping_C#.exe /im cmd.exe /im PING.EXE /F /T')
+            print(pid_6)
+            os.kill(pid_6, 9)
+        except Exception as error_output:
+            print('Error Function Loc>sec_a0031:', error_output)
+    def WEB_DDOS_Function(self):
+        try:
+            self.WEB_DDOS.destroy()
+            self.Kill_WEB_DDOS = ctk.CTkButton(self.master, width=122, height=30, text='WEB DDOS', font=('Helvetica bold',10),command=self.Kill_WEB_DDOS_Function, corner_radius=0, fg_color='red', hover_color='darkred')
+            self.Kill_WEB_DDOS.place(relx=0.274, rely=0.85, anchor='center')
+            process = subprocess.Popen(web_ddos_path)
+        except Exception as error_output:
+            print('Error Function Loc>sec_a0030:', error_output)
+    def Kill_WEB_DDOS_Function(self):
+        try:
+            self.Kill_WEB_DDOS.destroy()
+            self.WEB_DDOS = ctk.CTkButton(self.master, width=122, height=30, text='WEB DDOS', font=('Helvetica bold',10),command=self.WEB_DDOS_Function, corner_radius=0, fg_color='indigo', hover_color='darkred')
+            self.WEB_DDOS.place(relx=0.274, rely=0.85, anchor='center')
+
+            process = subprocess.run('taskkill /im Ping_Web_C#.exe /im Ping_C#.exe /im cmd.exe /im PING.EXE /F /T')
             print(pid_6)
             os.kill(pid_6, 9)
         except Exception as error_output:
@@ -864,9 +879,14 @@ class Aplikasi:
             process = subprocess.Popen(['python', ddos_settings_path])
         except Exception as error_output:
             print('Error Function Loc>sec_a0032:', error_output)
+    def WEB_DDOS_Input_IP_ADDRESS(self):
+        try:
+            process = subprocess.Popen(['python', web_ddos_settings_path])
+        except Exception as error_output:
+            print('Error Function Loc>sec_a0032:', error_output)
     def KILL_DDOS_EXTRAS_FUNCTION(self):
         try:
-            process = subprocess.run('taskkill /im Ping_C#.exe /im cmd.exe /im PING.EXE /F /T')
+            process = subprocess.run('taskkill /im Ping_Web_C#.exe /im Ping_C#.exe /im cmd.exe /im PING.EXE /F /T')
         except Exception as error_output:
             print('Error Function Loc>sec_a0033:', error_output)
     def launch_explorer_func(self):
