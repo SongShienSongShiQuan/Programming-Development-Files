@@ -1,0 +1,1 @@
+taskkill /F /im Mako_Gamma.exe
