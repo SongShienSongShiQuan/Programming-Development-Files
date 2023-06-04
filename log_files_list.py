@@ -1,1 +1,1 @@
-log_files_list_get = ['Exception_Duplication_Log.py', 'integer_count_value.py', 'log_files_list.py', 'program_list.py', 'NETWORK_LOG.txt', 'LAN_DDOS_BATCH.bat', 'ENV_VAR.txt']
+log_files_list_get = ['Exception_Duplication_Log.py', 'integer_count_value.py', 'log_files_list.py', 'program_list.py', 'NETWORK_LOG.txt', 'LAN_DDOS_BATCH.bat']

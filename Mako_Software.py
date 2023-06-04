@@ -53,6 +53,7 @@ ddos_path = "LAN_DDOS_C#.py"
 ddos_settings_path = "DDOS_SETTINGS.py"
 web_ddos_path = "Ping_Web_C#.bat"
 web_ddos_settings_path = "WEB_DDOS_SETTINGS.py"
+wifi_ddos_path = "Bandwidth_Test.bat"
 
 #PID IDs, set variable to global in functions ex: "global pid_1"
 #PID is acquired because 'script_path_example' is added as a variable and it starts the process before being called.
@@ -306,26 +307,29 @@ class Aplikasi:
         self.outputtext13 = ctk.CTkLabel(self.master, text='OUTPUT', font=('Helvetica bold',10), bg_color="black", height=0.5)
         self.outputtext13.place(relx=0.45, rely=0.80, anchor='center')
 
-        self.Initiate_Developer_Workspace = ctk.CTkButton(self.master, width=245, height=30, text='Initiate Devloper Workspace', font=('Helvetica bold',10),command=self.initiate_developer_workspace_python_csharp_lua, corner_radius=0, fg_color='indigo', hover_color='darkred')
+        self.Initiate_Developer_Workspace = ctk.CTkButton(self.master, width=245, height=30, text='Initiate Developer Workspace', font=('Helvetica bold',10),command=self.initiate_developer_workspace_python_csharp_lua, corner_radius=0, fg_color='indigo', hover_color='darkred')
         self.Initiate_Developer_Workspace.place(relx=0.185, rely=0.80, anchor='center')
 
-        self.Initiate_Developer_Workspace_output = ctk.CTkLabel(self.master, text='Initiate Devloper Workspace', font=('Helvetica bold',20), bg_color="black")
+        self.Initiate_Developer_Workspace_output = ctk.CTkLabel(self.master, text='Initiate Developer Workspace', font=('Helvetica bold',20), bg_color="black")
         self.Initiate_Developer_Workspace_output.place(relx=0.70, rely=0.80, anchor='center')
 
         self.outputtext14 = ctk.CTkLabel(self.master, text='OUTPUT', font=('Helvetica bold',10), bg_color="black", height=0.5)
         self.outputtext14.place(relx=0.45, rely=0.85, anchor='center')
 
-        self.DDOS_output = ctk.CTkLabel(self.master, text='Distributed\n Denial Of Service', font=('Helvetica bold',9), bg_color="black")
-        self.DDOS_output.place(relx=0.54, rely=0.85, anchor='center')
-
-        self.DDOS = ctk.CTkButton(self.master, width=122, height=30, text='LAN DDOS', font=('Helvetica bold',10),command=self.DDOS_Function, corner_radius=0, fg_color='indigo', hover_color='darkred')
-        self.DDOS.place(relx=0.099, rely=0.85, anchor='center')
+        self.DDOS = ctk.CTkButton(self.master, width=80, height=30, text='LAN DDOS', font=('Helvetica bold',10),command=self.DDOS_Function, corner_radius=0, fg_color='indigo', hover_color='darkred')
+        self.DDOS.place(relx=0.068, rely=0.85, anchor='center')
         
-        self.WEB_DDOS = ctk.CTkButton(self.master, width=122, height=30, text='WEB DDOS', font=('Helvetica bold',10),command=self.WEB_DDOS_Function, corner_radius=0, fg_color='indigo', hover_color='darkred')
-        self.WEB_DDOS.place(relx=0.274, rely=0.85, anchor='center')
+        self.WEB_DDOS = ctk.CTkButton(self.master, width=80, height=30, text='WEB DDOS', font=('Helvetica bold',10),command=self.WEB_DDOS_Function, corner_radius=0, fg_color='indigo', hover_color='darkred')
+        self.WEB_DDOS.place(relx=0.1865, rely=0.85, anchor='center')
 
-        self.ADD_INSTANCE_WEB_DDOS = ctk.CTkButton(self.master, width=50, height=20, text='+INSTANCE', font=('Helvetica bold',10),command=self.WEB_DDOS_Function, corner_radius=0, fg_color='indigo', hover_color='darkred')
-        self.ADD_INSTANCE_WEB_DDOS.place(relx=0.645, rely=0.85, anchor='center')
+        self.WIFI_DDOS = ctk.CTkButton(self.master, width=80, height=30, text='WIFI DDOS', font=('Helvetica bold',10),command=self.WIFI_DDOS_Function, corner_radius=0, fg_color='indigo', hover_color='darkred')
+        self.WIFI_DDOS.place(relx=0.304, rely=0.85, anchor='center')
+
+        self.ADD_INSTANCE_WEB_DDOS = ctk.CTkButton(self.master, width=50, height=20, text='+INSTANCE_WEB', font=('Helvetica bold',7),command=self.WEB_DDOS_Function, corner_radius=0, fg_color='indigo', hover_color='darkred')
+        self.ADD_INSTANCE_WEB_DDOS.place(relx=0.635, rely=0.85, anchor='center')
+
+        self.ADD_INSTANCE_WIFI_DDOS = ctk.CTkButton(self.master, width=50, height=20, text='+INSTANCE_WIFI', font=('Helvetica bold',7),command=self.WIFI_DDOS_Function, corner_radius=0, fg_color='indigo', hover_color='darkred')
+        self.ADD_INSTANCE_WIFI_DDOS.place(relx=0.535, rely=0.85, anchor='center')
 
         self.add_IP_ADDRESS = ctk.CTkButton(self.master, text='LOCAL', font=('Helvetica bold',10), command=self.DDOS_Input_IP_ADDRESS, corner_radius=0,fg_color='red', hover_color='darkred', width=50, height=20)
         self.add_IP_ADDRESS.place(relx=0.853, rely=0.85, anchor='center')
@@ -334,7 +338,8 @@ class Aplikasi:
         self.add_IP_ADDRESS_WEB.place(relx=0.93, rely=0.85, anchor='center')
 
         self.KILL_DDOS_EXTRAS = ctk.CTkButton(self.master, text='KILL DDOS', font=('Helvetica bold',10), command=self.KILL_DDOS_EXTRAS_FUNCTION, corner_radius=0,fg_color='red', hover_color='darkred', width=75, height=20)
-        self.KILL_DDOS_EXTRAS.place(relx=0.75, rely=0.85, anchor='center')
+        self.KILL_DDOS_EXTRAS.place(relx=0.757, rely=0.85, anchor='center')
+
 
         ###################################
         #Windows Default Application Below#
@@ -342,6 +347,9 @@ class Aplikasi:
 
         frame_windows_application = ctk.CTkFrame(self.master, width=425, height=70, fg_color="black", corner_radius=0)
         frame_windows_application.place(relx=0.69, rely=0.943, anchor='center')
+
+        self.GET_ENV_VAR = ctk.CTkButton(self.master, text='SAVE ENV', font=('Arial bold',7), command=self.SAVE_ENV_Function, corner_radius=0,fg_color='red', hover_color='darkred', width=50, height=0.1)
+        self.GET_ENV_VAR.place(relx=0.71, rely=0.902, anchor='center')
 
         frame_windows_application_line = ctk.CTkFrame(self.master, width=5, height=70, fg_color="gray", corner_radius=0)
         frame_windows_application_line.place(relx=0.8, rely=0.943, anchor='center')
@@ -832,8 +840,8 @@ class Aplikasi:
     def DDOS_Function(self):
         try:
             self.DDOS.destroy()
-            self.Kill_DDOS = ctk.CTkButton(self.master, width=122, height=30, text='LAN DDOS', font=('Helvetica bold',10),command=self.Kill_DDOS_Function, corner_radius=0, fg_color='red', hover_color='darkred')
-            self.Kill_DDOS.place(relx=0.099, rely=0.85, anchor='center')
+            self.Kill_DDOS = ctk.CTkButton(self.master, width=80, height=30, text='LAN DDOS', font=('Helvetica bold',10),command=self.Kill_DDOS_Function, corner_radius=0, fg_color='red', hover_color='darkred')
+            self.Kill_DDOS.place(relx=0.068, rely=0.85, anchor='center')
             process = subprocess.Popen(['python', ddos_path])
             time.sleep(2)
             get_pid = process.pid
@@ -847,10 +855,10 @@ class Aplikasi:
     def Kill_DDOS_Function(self):
         try:
             self.Kill_DDOS.destroy()
-            self.DDOS = ctk.CTkButton(self.master, width=122, height=30, text='LAN DDOS', font=('Helvetica bold',10),command=self.DDOS_Function, corner_radius=0, fg_color='indigo', hover_color='darkred')
-            self.DDOS.place(relx=0.099, rely=0.85, anchor='center')
+            self.DDOS = ctk.CTkButton(self.master, width=80, height=30, text='LAN DDOS', font=('Helvetica bold',10),command=self.DDOS_Function, corner_radius=0, fg_color='indigo', hover_color='darkred')
+            self.DDOS.place(relx=0.068, rely=0.85, anchor='center')
 
-            process = subprocess.run('taskkill /im Ping_Web_C#.exe /im Ping_C#.exe /im cmd.exe /im PING.EXE /F /T')
+            process = subprocess.run('taskkill /im Bandwidth_Test.exe /im Ping_Web_C#.exe /im Ping_C#.exe /im cmd.exe /im PING.EXE /F /T')
             print(pid_6)
             os.kill(pid_6, 9)
         except Exception as error_output:
@@ -858,130 +866,159 @@ class Aplikasi:
     def WEB_DDOS_Function(self):
         try:
             self.WEB_DDOS.destroy()
-            self.Kill_WEB_DDOS = ctk.CTkButton(self.master, width=122, height=30, text='WEB DDOS', font=('Helvetica bold',10),command=self.Kill_WEB_DDOS_Function, corner_radius=0, fg_color='red', hover_color='darkred')
-            self.Kill_WEB_DDOS.place(relx=0.274, rely=0.85, anchor='center')
+            self.Kill_WEB_DDOS = ctk.CTkButton(self.master, width=80, height=30, text='WEB DDOS', font=('Helvetica bold',10),command=self.Kill_WEB_DDOS_Function, corner_radius=0, fg_color='red', hover_color='darkred')
+            self.Kill_WEB_DDOS.place(relx=0.1865, rely=0.85, anchor='center')
             process = subprocess.Popen(web_ddos_path)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0030:', error_output)
+            print('Error Function Loc>sec_a0032:', error_output)
     def Kill_WEB_DDOS_Function(self):
         try:
             self.Kill_WEB_DDOS.destroy()
-            self.WEB_DDOS = ctk.CTkButton(self.master, width=122, height=30, text='WEB DDOS', font=('Helvetica bold',10),command=self.WEB_DDOS_Function, corner_radius=0, fg_color='indigo', hover_color='darkred')
-            self.WEB_DDOS.place(relx=0.274, rely=0.85, anchor='center')
+            self.WEB_DDOS = ctk.CTkButton(self.master, width=80, height=30, text='WEB DDOS', font=('Helvetica bold',10),command=self.WEB_DDOS_Function, corner_radius=0, fg_color='indigo', hover_color='darkred')
+            self.WEB_DDOS.place(relx=0.1865, rely=0.85, anchor='center')
 
-            process = subprocess.run('taskkill /im Ping_Web_C#.exe /im Ping_C#.exe /im cmd.exe /im PING.EXE /F /T')
+            process = subprocess.run('taskkill /im Bandwidth_Test.exe /im Ping_Web_C#.exe /im Ping_C#.exe /im cmd.exe /im PING.EXE /F /T')
             print(pid_6)
             os.kill(pid_6, 9)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0031:', error_output)
+            print('Error Function Loc>sec_a0033:', error_output)
+    def WIFI_DDOS_Function(self):
+        try:
+            self.WIFI_DDOS.destroy()
+            self.Kill_WIFI_DDOS = ctk.CTkButton(self.master, width=80, height=30, text='WIFI DDOS', font=('Helvetica bold',10),command=self.Kill_WIFI_DDOS_Function, corner_radius=0, fg_color='red', hover_color='darkred')
+            self.Kill_WIFI_DDOS.place(relx=0.304, rely=0.85, anchor='center')
+            process = subprocess.Popen(wifi_ddos_path)
+        except Exception as error_output:
+            print('Error Function Loc>sec_a0034:', error_output)
+    def Kill_WIFI_DDOS_Function(self):
+        try:
+            self.Kill_WIFI_DDOS.destroy()
+            self.WIFI_DDOS = ctk.CTkButton(self.master, width=80, height=30, text='WIFI DDOS', font=('Helvetica bold',10),command=self.WIFI_DDOS_Function, corner_radius=0, fg_color='indigo', hover_color='darkred')
+            self.WIFI_DDOS.place(relx=0.304, rely=0.85, anchor='center')
+
+            process = subprocess.run('taskkill /im Bandwidth_Test.exe /im Ping_Web_C#.exe /im Ping_C#.exe /im cmd.exe /im PING.EXE /F /T')
+            print(pid_6)
+            os.kill(pid_6, 9)
+        except Exception as error_output:
+            print('Error Function Loc>sec_a0035:', error_output)
     def DDOS_Input_IP_ADDRESS(self):
         try:
             process = subprocess.Popen(['python', ddos_settings_path])
         except Exception as error_output:
-            print('Error Function Loc>sec_a0032:', error_output)
+            print('Error Function Loc>sec_a0036:', error_output)
     def WEB_DDOS_Input_IP_ADDRESS(self):
         try:
             process = subprocess.Popen(['python', web_ddos_settings_path])
         except Exception as error_output:
-            print('Error Function Loc>sec_a0032:', error_output)
+            print('Error Function Loc>sec_a0037:', error_output)
     def KILL_DDOS_EXTRAS_FUNCTION(self):
         try:
-            process = subprocess.run('taskkill /im Ping_Web_C#.exe /im Ping_C#.exe /im cmd.exe /im PING.EXE /F /T')
+            process = subprocess.run('taskkill /im Bandwidth_Test.exe /im Ping_Web_C#.exe /im Ping_C#.exe /im cmd.exe /im PING.EXE /F /T')
         except Exception as error_output:
-            print('Error Function Loc>sec_a0033:', error_output)
+            print('Error Function Loc>sec_a0038:', error_output)
     def launch_explorer_func(self):
         try:
             process = subprocess.run(explorer_command)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0034:', error_output)
+            print('Error Function Loc>sec_a0039:', error_output)
     def kill_explorer_func(self):
         try:
             end_process = 'taskkill /im explorer.exe /F'
             process = subprocess.Popen(end_process)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0035:', error_output)
+            print('Error Function Loc>sec_a0040:', error_output)
     def launch_cmd_func(self):
         try:
             process = subprocess.run(cmd_command)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0036:', error_output)
+            print('Error Function Loc>sec_a0041:', error_output)
     def kill_cmd_func(self):
         try:
             end_process = 'taskkill /im cmd.exe /F'
             process = subprocess.Popen(end_process)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0037:', error_output)
+            print('Error Function Loc>sec_a0042:', error_output)
     def launch_msedge_func(self):
         try:
             process = subprocess.run(msedge_command)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0038:', error_output)
+            print('Error Function Loc>sec_a0043:', error_output)
     def kill_msedge_func(self):
         try:
             end_process = 'taskkill /im msedge.exe /F'
             process = subprocess.Popen(end_process)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0039:', error_output)
+            print('Error Function Loc>sec_a0044:', error_output)
     def launch_visual_studio_code_function(self):
         try:
             process = subprocess.run(visual_studio_code_path)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0040:', error_output)
+            print('Error Function Loc>sec_a0045:', error_output)
     def kill_visual_studio_code_function(self):
         try:
             end_process = 'taskkill /im Code.exe /F'
             process = subprocess.Popen(end_process)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0041:', error_output)
+            print('Error Function Loc>sec_a0046:', error_output)
     def launch_visual_studio_function(self):
         try:
             process = subprocess.run(visual_studio_path)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0042:', error_output)
+            print('Error Function Loc>sec_a0047:', error_output)
     def kill_visual_studio_function(self):
         try:
             end_process = 'taskkill /im devenv.exe /F'
             process = subprocess.Popen(end_process)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0043:', error_output)
+            print('Error Function Loc>sec_a0048:', error_output)
     def launch_blender_function(self):
         try:
             process = subprocess.run(blender_exe_path)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0044:', error_output)
+            print('Error Function Loc>sec_a0049:', error_output)
     def kill_blender_function(self):
         try:
             end_process = 'taskkill /im blender.exe /F'
             process = subprocess.Popen(end_process)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0045:', error_output)
+            print('Error Function Loc>sec_a0050:', error_output)
     def hibernate_function(self):
         try:
             process_hibernate = 'shutdown /h'
             process = subprocess.Popen(process_hibernate)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0046:', error_output)
+            print('Error Function Loc>sec_a0051:', error_output)
     def environment_variable_function(self):
         try:
             process = subprocess.run(environment_variable_path)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0047:', error_output)
+            print('Error Function Loc>sec_a0052:', error_output)
     def security_function(self):
         try:
             process = subprocess.run(security_path)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0048:', error_output)
+            print('Error Function Loc>sec_a0053:', error_output)
     def launch_roblox_studio_function(self):
         try:
             process = subprocess.run(roblox_studio_path)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0049:', error_output)
+            print('Error Function Loc>sec_a0054:', error_output)
     def kill_roblox_studio_function(self):
         try:
             end_process = 'taskkill /im RobloxStudioBeta.exe /F'
             process = subprocess.Popen(end_process)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0050:', error_output)
+            print('Error Function Loc>sec_a0055:', error_output)
+    def SAVE_ENV_Function(self):
+        try:
+            executecommand = 'set PATH'
+            command = executecommand
+            output2 = subprocess.run(command, capture_output=True, shell=True).stdout
+            output2length = output2.decode("utf-8")
+            with open("ENV_VAR.txt", "w") as write_ENV_VAR:
+                write_ENV_VAR.write(output2length)
+        except Exception as error_output:
+            print('Error Function Loc>sec_a0056:', error_output)
 class NewClass:
     def Software_Exit(self):
         print('Software Exited')
