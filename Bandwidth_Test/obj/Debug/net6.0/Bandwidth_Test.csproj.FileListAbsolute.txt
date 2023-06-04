@@ -1,0 +1,15 @@
+C:\Users\Chowfer\Desktop\CODE SPACE\C# WPF\Bandwidth_Test\bin\Debug\net6.0\Bandwidth_Test.exe
+C:\Users\Chowfer\Desktop\CODE SPACE\C# WPF\Bandwidth_Test\bin\Debug\net6.0\Bandwidth_Test.deps.json
+C:\Users\Chowfer\Desktop\CODE SPACE\C# WPF\Bandwidth_Test\bin\Debug\net6.0\Bandwidth_Test.runtimeconfig.json
+C:\Users\Chowfer\Desktop\CODE SPACE\C# WPF\Bandwidth_Test\bin\Debug\net6.0\Bandwidth_Test.dll
+C:\Users\Chowfer\Desktop\CODE SPACE\C# WPF\Bandwidth_Test\bin\Debug\net6.0\Bandwidth_Test.pdb
+C:\Users\Chowfer\Desktop\CODE SPACE\C# WPF\Bandwidth_Test\obj\Debug\net6.0\Bandwidth_Test.csproj.AssemblyReference.cache
+C:\Users\Chowfer\Desktop\CODE SPACE\C# WPF\Bandwidth_Test\obj\Debug\net6.0\Bandwidth_Test.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Chowfer\Desktop\CODE SPACE\C# WPF\Bandwidth_Test\obj\Debug\net6.0\Bandwidth_Test.AssemblyInfoInputs.cache
+C:\Users\Chowfer\Desktop\CODE SPACE\C# WPF\Bandwidth_Test\obj\Debug\net6.0\Bandwidth_Test.AssemblyInfo.cs
+C:\Users\Chowfer\Desktop\CODE SPACE\C# WPF\Bandwidth_Test\obj\Debug\net6.0\Bandwidth_Test.csproj.CoreCompileInputs.cache
+C:\Users\Chowfer\Desktop\CODE SPACE\C# WPF\Bandwidth_Test\obj\Debug\net6.0\Bandwidth_Test.dll
+C:\Users\Chowfer\Desktop\CODE SPACE\C# WPF\Bandwidth_Test\obj\Debug\net6.0\refint\Bandwidth_Test.dll
+C:\Users\Chowfer\Desktop\CODE SPACE\C# WPF\Bandwidth_Test\obj\Debug\net6.0\Bandwidth_Test.pdb
+C:\Users\Chowfer\Desktop\CODE SPACE\C# WPF\Bandwidth_Test\obj\Debug\net6.0\Bandwidth_Test.genruntimeconfig.cache
+C:\Users\Chowfer\Desktop\CODE SPACE\C# WPF\Bandwidth_Test\obj\Debug\net6.0\ref\Bandwidth_Test.dll
