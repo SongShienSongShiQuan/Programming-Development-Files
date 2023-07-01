@@ -54,6 +54,7 @@ ddos_settings_path = "DDOS_SETTINGS.py"
 web_ddos_path = "Ping_Web_C#.bat"
 web_ddos_settings_path = "WEB_DDOS_SETTINGS.py"
 wifi_ddos_path = "Bandwidth_Test.bat"
+const_ram_release_path = "Const_RAM_Release.py"
 
 #PID IDs, set variable to global in functions ex: "global pid_1"
 #PID is acquired because 'script_path_example' is added as a variable and it starts the process before being called.
@@ -1035,6 +1036,13 @@ class Aplikasi:
             self.Activate_Const_RAM_Release_indicator.configure(self.master, width=10, height=30, fg_color="darkgreen", corner_radius=0)
             self.Deactivate_Const_RAM_Release_Buttton = ctk.CTkButton(self.master, width=245, height=30, text='Const_RAM_Release', font=('Helvetica bold',10),command=self.Deactivate_Const_RAM_Release, corner_radius=0, fg_color='red', hover_color='darkred')
             self.Deactivate_Const_RAM_Release_Buttton.place(relx=0.185, rely=0.15, anchor='center')
+            process = subprocess.Popen(['python', const_ram_release_path])
+            get_pid = process.pid
+            print(get_pid)
+
+            global pid_8
+            pid_8 = get_pid
+            print(pid_8)
         except Exception as error_output:
             print('Error Function Loc>sec_a0057:', error_output)
     def Deactivate_Const_RAM_Release(self):
@@ -1043,7 +1051,9 @@ class Aplikasi:
             self.Activate_Const_RAM_Release_indicator.configure(self.master, width=10, height=30, fg_color="darkred", corner_radius=0)
             self.Activate_Const_RAM_Release_Button_Const_RAM_Release_Button = ctk.CTkButton(self.master, width=245, height=30, text='Const_RAM_Release', font=('Helvetica bold',10),command=self.Activate_Const_RAM_Release, corner_radius=0, fg_color='indigo', hover_color='darkred')
             self.Activate_Const_RAM_Release_Button_Const_RAM_Release_Button.place(relx=0.185, rely=0.15, anchor='center')
-            raise Exception("Function not assigned yet.")
+            print(pid_8)
+            os.kill(pid_8, 9)
+            ##raise Exception("Function not assigned yet.")
         except Exception as error_output:
             print('Error Function Loc>sec_a0058:', error_output)
 class NewClass:
