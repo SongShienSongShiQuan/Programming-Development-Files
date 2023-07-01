@@ -54,6 +54,9 @@ ddos_settings_path = "DDOS_SETTINGS.py"
 web_ddos_path = "Ping_Web_C#.bat"
 web_ddos_settings_path = "WEB_DDOS_SETTINGS.py"
 wifi_ddos_path = "Bandwidth_Test.bat"
+const_ram_release_path = "Const_RAM_Release.py"
+add_program_to_Const_RAM_Release_Program_List_path = "add_program_to_Const_RAM_Release_Program_List.py"
+sub_program_to_Const_RAM_Release_Program_List_path = "sub_program_to_Const_RAM_Release_Program_List.py"
 
 #PID IDs, set variable to global in functions ex: "global pid_1"
 #PID is acquired because 'script_path_example' is added as a variable and it starts the process before being called.
@@ -65,6 +68,7 @@ pid_4 = 0
 pid_5 = 0
 pid_6 = 0
 pid_7 = 0
+pid_8 = 0
 
 class Aplikasi:
     def __init__(self, master: ctk.CTk):
@@ -154,14 +158,29 @@ class Aplikasi:
         self.anti_afk_indicator = ctk.CTkFrame(self.master, width=10, height=30, fg_color="darkred", corner_radius=0)
         self.anti_afk_indicator.place(relx=0.375, rely=0.1, anchor='center')
 
-        self.label = ctk.CTkLabel(self.master, text='Mouse Click Tests: 0', font=('Helvetica bold',26), bg_color="black")
-        self.label.place(relx=0.7, rely=0.15, anchor='center')
-
         self.outputtext2 = ctk.CTkLabel(self.master, text='OUTPUT', font=('Helvetica bold',10), bg_color="black", height=0.5)
         self.outputtext2.place(relx=0.45, rely=0.15, anchor='center')
 
-        self.button = ctk.CTkButton(self.master, width=245, height=30, text='Click Counter', font=('Helvetica bold',10),command=self.increment, corner_radius=0, fg_color='indigo', hover_color='darkred')
-        self.button.place(relx=0.185, rely=0.15, anchor='center')
+        self.Activate_Const_RAM_Release_Button_output = ctk.CTkLabel(self.master, text='CONST RAM RELEASE', font=('Helvetica bold',15), bg_color="black")
+        self.Activate_Const_RAM_Release_Button_output.place(relx=0.61, rely=0.15, anchor='center')
+
+        self.Activate_Const_RAM_Release_Button = ctk.CTkButton(self.master, width=245, height=30, text='Const_RAM_Release', font=('Helvetica bold',10),command=self.Activate_Const_RAM_Release, corner_radius=0, fg_color='indigo', hover_color='darkred')
+        self.Activate_Const_RAM_Release_Button.place(relx=0.185, rely=0.15, anchor='center')
+
+        self.Activate_Const_RAM_Release_indicator = ctk.CTkFrame(self.master, width=10, height=30, fg_color="darkred", corner_radius=0)
+        self.Activate_Const_RAM_Release_indicator.place(relx=0.375, rely=0.15, anchor='center')
+
+        self.add_program_to_Const_RAM_Release_Program_List = ctk.CTkButton(self.master, text='+ Program', font=('Helvetica bold',10), command=self.add_program_to_Const_RAM_Release_Program_List_function, corner_radius=0,fg_color='red', hover_color='darkred', width=75, height=20)
+        self.add_program_to_Const_RAM_Release_Program_List.place(relx=0.92, rely=0.15, anchor='center')
+
+        self.sub_program_to_Const_RAM_Release_Program_List = ctk.CTkButton(self.master, text='- Program', font=('Helvetica bold',10), command=self.sub_program_to_Const_RAM_Release_Program_List_function, corner_radius=0,fg_color='blue', hover_color='darkblue', width=75, height=20)
+        self.sub_program_to_Const_RAM_Release_Program_List.place(relx=0.80, rely=0.15, anchor='center')
+
+        ##self.label = ctk.CTkLabel(self.master, text='Mouse Click Tests: 0', font=('Helvetica bold',26), bg_color="black")
+        ##self.label.place(relx=0.7, rely=0.15, anchor='center')
+
+        ##self.button = ctk.CTkButton(self.master, width=245, height=30, text='Click Counter', font=('Helvetica bold',10),command=self.increment, corner_radius=0, fg_color='indigo', hover_color='darkred')
+        ##self.button.place(relx=0.185, rely=0.15, anchor='center')
 
         self.outputtext3 = ctk.CTkLabel(self.master, text='OUTPUT', font=('Helvetica bold',10), bg_color="black", height=0.5)
         self.outputtext3.place(relx=0.45, rely=0.2, anchor='center')
@@ -1019,6 +1038,44 @@ class Aplikasi:
                 write_ENV_VAR.write(output2length)
         except Exception as error_output:
             print('Error Function Loc>sec_a0056:', error_output)
+    def Activate_Const_RAM_Release(self):
+        try:
+            self.Activate_Const_RAM_Release_Button.destroy()
+            self.Activate_Const_RAM_Release_indicator.configure(self.master, width=10, height=30, fg_color="darkgreen", corner_radius=0)
+            self.Deactivate_Const_RAM_Release_Buttton = ctk.CTkButton(self.master, width=245, height=30, text='Const_RAM_Release', font=('Helvetica bold',10),command=self.Deactivate_Const_RAM_Release, corner_radius=0, fg_color='red', hover_color='darkred')
+            self.Deactivate_Const_RAM_Release_Buttton.place(relx=0.185, rely=0.15, anchor='center')
+            process = subprocess.Popen(['python', const_ram_release_path])
+            get_pid = process.pid
+            print(get_pid)
+
+            global pid_8
+            pid_8 = get_pid
+            print(pid_8)
+        except Exception as error_output:
+            print('Error Function Loc>sec_a0057:', error_output)
+    def Deactivate_Const_RAM_Release(self):
+        try:
+            self.Deactivate_Const_RAM_Release_Buttton.destroy()
+            self.Activate_Const_RAM_Release_indicator.configure(self.master, width=10, height=30, fg_color="darkred", corner_radius=0)
+            self.Activate_Const_RAM_Release_Button_Const_RAM_Release_Button = ctk.CTkButton(self.master, width=245, height=30, text='Const_RAM_Release', font=('Helvetica bold',10),command=self.Activate_Const_RAM_Release, corner_radius=0, fg_color='indigo', hover_color='darkred')
+            self.Activate_Const_RAM_Release_Button_Const_RAM_Release_Button.place(relx=0.185, rely=0.15, anchor='center')
+            print(pid_8)
+            os.kill(pid_8, 9)
+            ##raise Exception("Function not assigned yet.")
+        except Exception as error_output:
+            print('Error Function Loc>sec_a0058:', error_output)
+    def add_program_to_Const_RAM_Release_Program_List_function(self):
+        try:
+            process = subprocess.Popen(['python', add_program_to_Const_RAM_Release_Program_List_path])
+            raise Exception("Function not assigned yet.")
+        except Exception as error_output:
+            print('Error Function Loc>sec_a0059:', error_output)
+    def sub_program_to_Const_RAM_Release_Program_List_function(self):
+        try:
+            process = subprocess.Popen(['python', sub_program_to_Const_RAM_Release_Program_List_path])
+            raise Exception("Function not assigned yet.")
+        except Exception as error_output:
+            print('Error Function Loc>sec_a0060:', error_output)
 class NewClass:
     def Software_Exit(self):
         print('Software Exited')
