@@ -57,6 +57,7 @@ wifi_ddos_path = "Bandwidth_Test.bat"
 const_ram_release_path = "Const_RAM_Release.py"
 add_program_to_Const_RAM_Release_Program_List_path = "add_program_to_Const_RAM_Release_Program_List.py"
 sub_program_to_Const_RAM_Release_Program_List_path = "sub_program_to_Const_RAM_Release_Program_List.py"
+radeon_software = "Radeon_Software.bat"
 
 #PID IDs, set variable to global in functions ex: "global pid_1"
 #PID is acquired because 'script_path_example' is added as a variable and it starts the process before being called.
@@ -308,11 +309,14 @@ class Aplikasi:
         self.outputtext11 = ctk.CTkLabel(self.master, text='OUTPUT', font=('Helvetica bold',10), bg_color="black", height=0.5)
         self.outputtext11.place(relx=0.45, rely=0.70, anchor='center')
 
-        self.Fan_Control = ctk.CTkButton(self.master, width=245, height=30, text='Fan Control', font=('Helvetica bold',10),command=self.Fan_Control_Function, corner_radius=0, fg_color='indigo', hover_color='darkred')
-        self.Fan_Control.place(relx=0.185, rely=0.70, anchor='center')
+        self.Fan_Control = ctk.CTkButton(self.master, width=122, height=30, text='EVGA', font=('Helvetica bold',10),command=self.Fan_Control_Function, corner_radius=0, fg_color='indigo', hover_color='darkred')
+        self.Fan_Control.place(relx=0.098, rely=0.70, anchor='center')
 
-        self.Fan_Control_output = ctk.CTkLabel(self.master, text='Fan Control Software', font=('Helvetica bold',20), bg_color="black")
-        self.Fan_Control_output.place(relx=0.70, rely=0.70, anchor='center')
+        self.Fan_Control_and_AMD_Radeon_Software_output = ctk.CTkLabel(self.master, text='GPU OVERCLOCK', font=('Helvetica bold',20), bg_color="black")
+        self.Fan_Control_and_AMD_Radeon_Software_output.place(relx=0.70, rely=0.70, anchor='center')
+
+        self.Radeon_Software = ctk.CTkButton(self.master, width=121, height=30, text='AMD RADEON', font=('Helvetica bold',10),command=self.AMD_RADEON_Function, corner_radius=0, fg_color='indigo', hover_color='darkred')
+        self.Radeon_Software.place(relx=0.274, rely=0.70, anchor='center')
 
         self.outputtext12 = ctk.CTkLabel(self.master, text='OUTPUT', font=('Helvetica bold',10), bg_color="black", height=0.5)
         self.outputtext12.place(relx=0.45, rely=0.75, anchor='center')
@@ -839,6 +843,11 @@ class Aplikasi:
             process = subprocess.run(Fan_Control_Command)
         except Exception as error_output:
             print('Error Function Loc>sec_a0027:', error_output)
+    def AMD_RADEON_Function(self):
+        try:
+            process = subprocess.run(radeon_software)
+        except Exception as error_output:
+            print('Error Function Loc>sec_a0028:', error_output)
     def Task_Manager_Function(self):
         try:
             self.Task_Manager.destroy()
@@ -846,7 +855,7 @@ class Aplikasi:
             self.Kill_Task_Manager.place(relx=0.185, rely=0.75, anchor='center')
             process = subprocess.run(taskmanager_command)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0028:', error_output)
+            print('Error Function Loc>sec_a0029:', error_output)
     def Kill_Task_Manager_Function(self):
         try:
             self.Kill_Task_Manager.destroy()
@@ -855,7 +864,7 @@ class Aplikasi:
 
             process = subprocess.run('taskkill /im taskmgr.exe /F')
         except Exception as error_output:
-            print('Error Function Loc>sec_a0029:', error_output)
+            print('Error Function Loc>sec_a0030:', error_output)
     def DDOS_Function(self):
         try:
             self.DDOS.destroy()
@@ -870,7 +879,7 @@ class Aplikasi:
             pid_6 = get_pid
             print(pid_2)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0030:', error_output)
+            print('Error Function Loc>sec_a0031:', error_output)
     def Kill_DDOS_Function(self):
         try:
             self.Kill_DDOS.destroy()
@@ -881,7 +890,7 @@ class Aplikasi:
             print(pid_6)
             os.kill(pid_6, 9)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0031:', error_output)
+            print('Error Function Loc>sec_a0032:', error_output)
     def WEB_DDOS_Function(self):
         try:
             self.WEB_DDOS.destroy()
@@ -889,7 +898,7 @@ class Aplikasi:
             self.Kill_WEB_DDOS.place(relx=0.1865, rely=0.85, anchor='center')
             process = subprocess.Popen(web_ddos_path)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0032:', error_output)
+            print('Error Function Loc>sec_a0033:', error_output)
     def Kill_WEB_DDOS_Function(self):
         try:
             self.Kill_WEB_DDOS.destroy()
@@ -900,7 +909,7 @@ class Aplikasi:
             print(pid_6)
             os.kill(pid_6, 9)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0033:', error_output)
+            print('Error Function Loc>sec_a0034:', error_output)
     def WIFI_DDOS_Function(self):
         try:
             self.WIFI_DDOS.destroy()
@@ -908,7 +917,7 @@ class Aplikasi:
             self.Kill_WIFI_DDOS.place(relx=0.304, rely=0.85, anchor='center')
             process = subprocess.Popen(wifi_ddos_path)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0034:', error_output)
+            print('Error Function Loc>sec_a0035:', error_output)
     def Kill_WIFI_DDOS_Function(self):
         try:
             self.Kill_WIFI_DDOS.destroy()
@@ -919,115 +928,115 @@ class Aplikasi:
             print(pid_6)
             os.kill(pid_6, 9)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0035:', error_output)
+            print('Error Function Loc>sec_a0036:', error_output)
     def DDOS_Input_IP_ADDRESS(self):
         try:
             process = subprocess.Popen(['python', ddos_settings_path])
         except Exception as error_output:
-            print('Error Function Loc>sec_a0036:', error_output)
+            print('Error Function Loc>sec_a0037:', error_output)
     def WEB_DDOS_Input_IP_ADDRESS(self):
         try:
             process = subprocess.Popen(['python', web_ddos_settings_path])
         except Exception as error_output:
-            print('Error Function Loc>sec_a0037:', error_output)
+            print('Error Function Loc>sec_a0038:', error_output)
     def KILL_DDOS_EXTRAS_FUNCTION(self):
         try:
             process = subprocess.run('taskkill /im Bandwidth_Test.exe /im Ping_Web_C#.exe /im Ping_C#.exe /im cmd.exe /im PING.EXE /F /T')
         except Exception as error_output:
-            print('Error Function Loc>sec_a0038:', error_output)
+            print('Error Function Loc>sec_a0039:', error_output)
     def launch_explorer_func(self):
         try:
             process = subprocess.run(explorer_command)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0039:', error_output)
+            print('Error Function Loc>sec_a0040:', error_output)
     def kill_explorer_func(self):
         try:
             end_process = 'taskkill /im explorer.exe /F'
             process = subprocess.Popen(end_process)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0040:', error_output)
+            print('Error Function Loc>sec_a0041:', error_output)
     def launch_cmd_func(self):
         try:
             process = subprocess.run(cmd_command)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0041:', error_output)
+            print('Error Function Loc>sec_a0042:', error_output)
     def kill_cmd_func(self):
         try:
             end_process = 'taskkill /im cmd.exe /F'
             process = subprocess.Popen(end_process)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0042:', error_output)
+            print('Error Function Loc>sec_a0043:', error_output)
     def launch_msedge_func(self):
         try:
             process = subprocess.run(msedge_command)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0043:', error_output)
+            print('Error Function Loc>sec_a0044:', error_output)
     def kill_msedge_func(self):
         try:
             end_process = 'taskkill /im msedge.exe /F'
             process = subprocess.Popen(end_process)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0044:', error_output)
+            print('Error Function Loc>sec_a0045:', error_output)
     def launch_visual_studio_code_function(self):
         try:
             process = subprocess.run(visual_studio_code_path)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0045:', error_output)
+            print('Error Function Loc>sec_a0046:', error_output)
     def kill_visual_studio_code_function(self):
         try:
             end_process = 'taskkill /im Code.exe /F'
             process = subprocess.Popen(end_process)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0046:', error_output)
+            print('Error Function Loc>sec_a0047:', error_output)
     def launch_visual_studio_function(self):
         try:
             process = subprocess.run(visual_studio_path)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0047:', error_output)
+            print('Error Function Loc>sec_a0048:', error_output)
     def kill_visual_studio_function(self):
         try:
             end_process = 'taskkill /im devenv.exe /F'
             process = subprocess.Popen(end_process)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0048:', error_output)
+            print('Error Function Loc>sec_a0049:', error_output)
     def launch_blender_function(self):
         try:
             process = subprocess.run(blender_exe_path)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0049:', error_output)
+            print('Error Function Loc>sec_a0050:', error_output)
     def kill_blender_function(self):
         try:
             end_process = 'taskkill /im blender.exe /F'
             process = subprocess.Popen(end_process)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0050:', error_output)
+            print('Error Function Loc>sec_a0051:', error_output)
     def hibernate_function(self):
         try:
             process_hibernate = 'shutdown /h'
             process = subprocess.Popen(process_hibernate)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0051:', error_output)
+            print('Error Function Loc>sec_a0052:', error_output)
     def environment_variable_function(self):
         try:
             process = subprocess.run(environment_variable_path)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0052:', error_output)
+            print('Error Function Loc>sec_a0053:', error_output)
     def security_function(self):
         try:
             process = subprocess.run(security_path)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0053:', error_output)
+            print('Error Function Loc>sec_a0054:', error_output)
     def launch_roblox_studio_function(self):
         try:
             process = subprocess.run(roblox_studio_path)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0054:', error_output)
+            print('Error Function Loc>sec_a0055:', error_output)
     def kill_roblox_studio_function(self):
         try:
             end_process = 'taskkill /im RobloxStudioBeta.exe /F'
             process = subprocess.Popen(end_process)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0055:', error_output)
+            print('Error Function Loc>sec_a0056:', error_output)
     def SAVE_ENV_Function(self):
         try:
             executecommand = 'set PATH'
@@ -1037,7 +1046,7 @@ class Aplikasi:
             with open("ENV_VAR.txt", "w") as write_ENV_VAR:
                 write_ENV_VAR.write(output2length)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0056:', error_output)
+            print('Error Function Loc>sec_a0057:', error_output)
     def Activate_Const_RAM_Release(self):
         try:
             self.Activate_Const_RAM_Release_Button.destroy()
@@ -1052,7 +1061,7 @@ class Aplikasi:
             pid_8 = get_pid
             print(pid_8)
         except Exception as error_output:
-            print('Error Function Loc>sec_a0057:', error_output)
+            print('Error Function Loc>sec_a0058:', error_output)
     def Deactivate_Const_RAM_Release(self):
         try:
             self.Deactivate_Const_RAM_Release_Buttton.destroy()
@@ -1063,19 +1072,19 @@ class Aplikasi:
             os.kill(pid_8, 9)
             ##raise Exception("Function not assigned yet.")
         except Exception as error_output:
-            print('Error Function Loc>sec_a0058:', error_output)
+            print('Error Function Loc>sec_a0059:', error_output)
     def add_program_to_Const_RAM_Release_Program_List_function(self):
         try:
             process = subprocess.Popen(['python', add_program_to_Const_RAM_Release_Program_List_path])
             raise Exception("Function not assigned yet.")
         except Exception as error_output:
-            print('Error Function Loc>sec_a0059:', error_output)
+            print('Error Function Loc>sec_a0060:', error_output)
     def sub_program_to_Const_RAM_Release_Program_List_function(self):
         try:
             process = subprocess.Popen(['python', sub_program_to_Const_RAM_Release_Program_List_path])
             raise Exception("Function not assigned yet.")
         except Exception as error_output:
-            print('Error Function Loc>sec_a0060:', error_output)
+            print('Error Function Loc>sec_a0061:', error_output)
 class NewClass:
     def Software_Exit(self):
         print('Software Exited')

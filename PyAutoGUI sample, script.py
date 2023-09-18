@@ -26,6 +26,18 @@ while True:
                 x = random.randint(101,1000) #coordinates for x screen coordinates
                 y = random.randint(200,1500) #coordinates for y screen coordinates
                 pag.moveTo(x,y,1)
+                keyboard.press("a")
+                time.sleep(1)
+                keyboard.release("a")
+                keyboard.press("w")
+                time.sleep(1)
+                keyboard.release("w")
+                keyboard.press("s")
+                time.sleep(1)
+                keyboard.release("s")
+                keyboard.press("d")
+                time.sleep(1)
+                keyboard.release("d")
                 time.ctime(3)
                 if keyboard.is_pressed(Set_Action_False):
                     action = False
