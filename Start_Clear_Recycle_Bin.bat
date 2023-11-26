@@ -1,0 +1,1 @@
+runas /user:Chowfer Clear_Recycle_Bin.bat
