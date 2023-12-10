@@ -58,6 +58,7 @@ const_ram_release_path = "Const_RAM_Release.py"
 add_program_to_Const_RAM_Release_Program_List_path = "add_program_to_Const_RAM_Release_Program_List.py"
 sub_program_to_Const_RAM_Release_Program_List_path = "sub_program_to_Const_RAM_Release_Program_List.py"
 radeon_software = "Radeon_Software.bat"
+clear_bin = "Start_Clear_Recycle_Bin.bat"
 
 #PID IDs, set variable to global in functions ex: "global pid_1"
 #PID is acquired because 'script_path_example' is added as a variable and it starts the process before being called.
@@ -321,10 +322,13 @@ class Aplikasi:
         self.outputtext12 = ctk.CTkLabel(self.master, text='OUTPUT', font=('Helvetica bold',10), bg_color="black", height=0.5)
         self.outputtext12.place(relx=0.45, rely=0.75, anchor='center')
 
-        self.Task_Manager = ctk.CTkButton(self.master, width=245, height=30, text='Task Manager', font=('Helvetica bold',10),command=self.Task_Manager_Function, corner_radius=0, fg_color='indigo', hover_color='darkred')
-        self.Task_Manager.place(relx=0.185, rely=0.75, anchor='center')
+        self.Task_Manager = ctk.CTkButton(self.master, width=122, height=30, text='Task Manager', font=('Helvetica bold',10),command=self.Task_Manager_Function, corner_radius=0, fg_color='indigo', hover_color='darkred')
+        self.Task_Manager.place(relx=0.098, rely=0.75, anchor='center')
 
-        self.Task_Manager_output = ctk.CTkLabel(self.master, text='Task Manager', font=('Helvetica bold',20), bg_color="black")
+        self.Clean_Bin = ctk.CTkButton(self.master, width=121, height=30, text='Clear REC_BIN', font=('Helvetica bold',10),command=self.Clear_REC_BIN, corner_radius=0, fg_color='indigo', hover_color='darkred')
+        self.Clean_Bin.place(relx=0.274, rely=0.75, anchor='center')
+
+        self.Task_Manager_output = ctk.CTkLabel(self.master, text='Task Manager & Clear REC_BIN', font=('Helvetica bold',20), bg_color="black")
         self.Task_Manager_output.place(relx=0.70, rely=0.75, anchor='center')
 
         self.outputtext13 = ctk.CTkLabel(self.master, text='OUTPUT', font=('Helvetica bold',10), bg_color="black", height=0.5)
@@ -1085,6 +1089,12 @@ class Aplikasi:
             raise Exception("Function not assigned yet.")
         except Exception as error_output:
             print('Error Function Loc>sec_a0061:', error_output)
+    def Clear_REC_BIN(self):
+        try:
+            process = subprocess.run(clear_bin)
+            raise NotImplementedError('Function returns nothing.')
+        except Exception as error_output:
+            print('Error Function Loc>sec_a0062:', error_output)
 class NewClass:
     def Software_Exit(self):
         print('Software Exited')

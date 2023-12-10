@@ -1,1 +1,1 @@
-start RobloxStudioLauncherBeta.exe
+start RobloxStudioBeta.exe
